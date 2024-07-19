@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BB0314B1-46E9-432D-9408-C9DF28472E55",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "LogicOperatorsTests",
+        "name" : "LogicOperatorsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

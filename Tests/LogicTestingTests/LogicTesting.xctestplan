@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "0C961FF8-DC15-45D6-8698-BAC3D25D2D35",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "LogicTestingTests",
+        "name" : "LogicTestingTests"
+      }
+    }
+  ],
+  "version" : 1
+}

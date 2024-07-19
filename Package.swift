@@ -5,10 +5,12 @@ import PackageDescription
 
 extension String {
     static let logicOperators: Self = "LogicOperators"
+    static let logicTesting: Self = "LogicTesting"
 }
 
 extension Target.Dependency {
     static let logicOperators: Self = .target(name: .logicOperators)
+    static let logicTesting: Self = .target(name: .logicTesting)
 }
 
 extension Target.Dependency {
@@ -21,7 +23,7 @@ extension [Target.Dependency] {
 }
 
 extension Package {
-    static func language(
+    static func logicOperators(
         targets: [(
             name: String,
             dependencies: [Target.Dependency]
@@ -39,14 +41,17 @@ extension Package {
             products: [
                 [
                     .library(
-                        name: "LogicOperators",
-                        targets: ["LogicOperators"]
+                        name: .logicOperators,
+                        targets: [.logicOperators]
+                    )
+                ],
+                [
+                    .library(
+                        name: .logicTesting,
+                        targets: [.logicTesting]
                     )
                 ],
             ].flatMap { $0 },
-            dependencies: [
-                .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.5")
-            ],
             targets: [
                 targets.map { document in
                     Target.target(
@@ -57,7 +62,7 @@ extension Package {
                 targets.map { document in
                     Target.testTarget(
                         name: "\(document.name)Tests",
-                        dependencies: [.init(stringLiteral: document.name)]
+                        dependencies: [.init(stringLiteral: document.name), .logicTesting]
                     )
                 }
             ].flatMap { $0 }
@@ -65,13 +70,19 @@ extension Package {
     }
 }
 
-let package = Package.language(
+let package = Package.logicOperators(
     targets: [
         (
             name: .logicOperators,
             dependencies: [
+                
+            ]
+        ),
+        (
+            name: .logicTesting,
+            dependencies: [
 
             ]
-        )
+        ),
     ]
 )
