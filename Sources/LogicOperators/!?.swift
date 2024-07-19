@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Define the custom precedence group
 precedencegroup PrefixUnaryPrecedence {
     associativity: right
     higherThan: AssignmentPrecedence

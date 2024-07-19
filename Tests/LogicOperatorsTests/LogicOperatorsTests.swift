@@ -7,11 +7,9 @@
 
 import Foundation
 import LogicOperators
+import LogicTesting
 import Testing
 
-extension Bool?:@retroactive CaseIterable {
-    static public var allCases: [Optional<Bool>] = [.some(true), .some(false), .none]
-}
 
 @Test("!?", arguments: Bool?.allCases)
 func iuygsdjf(optional: Bool?) {
@@ -24,3 +22,46 @@ func iuygsdjf(optional: Bool?) {
         #expect(!?optional == nil)
     }
 }
+
+@Test("&&?", arguments: Bool?.allCases, Bool?.allCases)
+func hsdfsksdf(left: Bool?, right: Bool?) {
+    switch (left, right) {
+    case (.some(true), .some(true)):
+        let x = (left &&? right) == true
+        #expect(x)
+        
+        let y = left &&? right == true
+        #expect(y)
+    default:
+        ()
+        
+    }
+}
+//
+//@Test("==?", arguments: Bool?.allCases)
+//func asdnaslkdas(left: Bool?, right: Bool?) {
+//    switch optional {
+//    case .some(true):
+//        #expect(!?optional == false)
+//    case .some(false):
+//        #expect(!?optional == true)
+//    case .none:
+//        #expect(!?optional == nil)
+//    }
+//}
+//
+//
+//
+//@Test("||?", arguments: Bool?.allCases)
+//func mlasiahda(left: Bool?, right: Bool?) {
+//    switch optional {
+//    case .some(true):
+//        #expect(!?optional == false)
+//    case .some(false):
+//        #expect(!?optional == true)
+//    case .none:
+//        #expect(!?optional == nil)
+//    }
+//}
+//
+//
