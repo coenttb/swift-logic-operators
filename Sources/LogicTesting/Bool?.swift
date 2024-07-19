@@ -7,6 +7,10 @@
 
 import Foundation
 
+extension Bool: CaseIterable {
+    public static let allCases: [Bool] = [true, false]
+}
+
 // MARK: - Extensions for LogicTesting
 
 /// Extension to make `Bool?` conform to `CaseIterable` protocol.

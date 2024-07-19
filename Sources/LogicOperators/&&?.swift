@@ -33,7 +33,10 @@ infix operator &&?: LogicalConjunctionPrecedence
 ///   - right: An optional Boolean value, evaluated lazily using autoclosure.
 /// - Returns: An optional Boolean value that is `nil` if either `left` or `right` is `nil`,
 ///            otherwise the logical AND of the unwrapped values.
-public func &&? (left: Bool?, right: @autoclosure () throws -> Bool?) rethrows -> Bool? {
+public func &&? (
+    left: Bool?,
+    right: @autoclosure () throws -> Bool?
+) rethrows -> Bool? {
     guard let left = left, let right = try right() else {
         return nil
     }

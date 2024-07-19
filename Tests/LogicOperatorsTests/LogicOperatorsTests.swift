@@ -10,7 +10,6 @@ import LogicOperators
 import LogicTesting
 import Testing
 
-
 @Test("!?", arguments: Bool?.allCases)
 func iuygsdjf(optional: Bool?) {
     switch optional {
@@ -23,45 +22,36 @@ func iuygsdjf(optional: Bool?) {
     }
 }
 
+@Test("==?", arguments: Bool?.allCases, Bool?.allCases)
+func asdnaslkdas(left: Bool?, right: Bool?) {
+    switch (left, right) {
+    case (_, .none):
+        #expect((left ==? right) == .none)
+    case (_, .some(_)):
+        #expect((left ==? right) != .none)
+    }
+}
+
 @Test("&&?", arguments: Bool?.allCases, Bool?.allCases)
 func hsdfsksdf(left: Bool?, right: Bool?) {
     switch (left, right) {
-    case (.some(true), .some(true)):
-        let x = (left &&? right) == true
-        #expect(x)
-        
-        let y = left &&? right == true
-        #expect(y)
+    case (.none, _):
+        #expect((left &&? right) == .none)
+    case (_, .none):
+        #expect((left &&? right) == .none)
     default:
-        ()
-        
+        #expect((left &&? right) != .none)
     }
 }
-//
-//@Test("==?", arguments: Bool?.allCases)
-//func asdnaslkdas(left: Bool?, right: Bool?) {
-//    switch optional {
-//    case .some(true):
-//        #expect(!?optional == false)
-//    case .some(false):
-//        #expect(!?optional == true)
-//    case .none:
-//        #expect(!?optional == nil)
-//    }
-//}
-//
-//
-//
-//@Test("||?", arguments: Bool?.allCases)
-//func mlasiahda(left: Bool?, right: Bool?) {
-//    switch optional {
-//    case .some(true):
-//        #expect(!?optional == false)
-//    case .some(false):
-//        #expect(!?optional == true)
-//    case .none:
-//        #expect(!?optional == nil)
-//    }
-//}
-//
-//
+
+@Test("||?", arguments: Bool?.allCases, Bool?.allCases)
+func aaksjda(left: Bool?, right: Bool?) {
+    switch (left, right) {
+    case (.none, _):
+        #expect((left ||? right) == .none)
+    case (_, .none):
+        #expect((left ||? right) == .none)
+    default:
+        #expect((left ||? right) != .none)
+    }
+}

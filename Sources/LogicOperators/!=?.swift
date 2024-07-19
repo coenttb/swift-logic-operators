@@ -21,7 +21,10 @@ import Foundation
 /// - Note: This operator follows the precedence of `ComparisonPrecedence`.
 infix operator !=? : ComparisonPrecedence
 
-public func !=?<T: Equatable>(lhs: T?, rhs: T) -> T? {
+public func !=?<T: Equatable>(
+    lhs: T?,
+    rhs: T
+) -> T? {
     guard let lhs = lhs, lhs != rhs else {
         return nil
     }
