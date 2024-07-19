@@ -7,26 +7,22 @@
 
 import Foundation
 
-/// Custom operator for comparing an optional value with a non-optional value.
+// Inequality (!=?) Operator for Optional Values
+infix operator !=? : ComparisonPrecedence
+
+/// Custom operator for comparing an optional value with a non-optional value for inequality.
 ///
 /// The `!=?` operator compares an optional value (`lhs`) with a non-optional value (`rhs`).
-/// If the optional value is `nil` or equal to the non-optional value, the result is `nil`.
-/// Otherwise, it returns the unwrapped optional value.
+/// If the optional value is `nil`, the result is `nil`. Otherwise, it returns the result of the inequality comparison.
 ///
 /// - Parameters:
 ///   - lhs: An optional value of type `T`.
 ///   - rhs: A non-optional value of type `T`.
-/// - Returns: The unwrapped value of `lhs` if it is not `nil` and not equal to `rhs`; otherwise, `nil`.
-///
-/// - Note: This operator follows the precedence of `ComparisonPrecedence`.
-infix operator !=? : ComparisonPrecedence
-
-public func !=?<T: Equatable>(
-    lhs: T?,
-    rhs: T
-) -> T? {
-    guard let lhs = lhs, lhs != rhs else {
+/// - Returns: An optional Boolean value that is `nil` if `lhs` is `nil`, `true` if `lhs` is not equal to `rhs`,
+///            and `false` if `lhs` is equal to `rhs`.
+public func !=?<T: Equatable>(lhs: T?, rhs: T) -> Bool? {
+    guard let lhs = lhs else {
         return nil
     }
-    return lhs
+    return lhs != rhs
 }

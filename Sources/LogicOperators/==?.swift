@@ -7,25 +7,23 @@
 
 import Foundation
 
+// Equality (==?) Operator for Optional Values
 infix operator ==? : ComparisonPrecedence
 
-/// Custom operator for comparing a non-optional value with an optional value for equality.
+/// Custom operator for comparing an optional value with a non-optional value for equality.
 ///
-/// The `==?` operator compares a non-optional value (`lhs`) with an optional value (`rhs`).
+/// The `==?` operator compares an optional value (`lhs`) with a non-optional value (`rhs`).
 /// If the optional value is `nil`, the result is `nil`. Otherwise, it returns the result of the equality comparison.
 ///
 /// - Parameters:
-///   - lhs: A non-optional value of type `T`.
-///   - rhs: An optional value of type `T`, evaluated lazily using an autoclosure.
-/// - Returns: An optional Boolean value that is `nil` if `rhs` is `nil`, `true` if `lhs` is equal to `rhs`,
+///   - lhs: An optional value of type `T`, evaluated lazily using an autoclosure.
+///   - rhs: A non-optional value of type `T`.
+/// - Returns: An optional Boolean value that is `nil` if `lhs` is `nil`, `true` if `lhs` is equal to `rhs`,
 ///            and `false` if `lhs` is not equal to `rhs`.
-/// - Throws: Rethrows any error thrown by the autoclosure evaluating `rhs`.
-public func ==?<T: Equatable>(
-    lhs: T?,
-    rhs: @autoclosure () throws -> T?
-) rethrows -> Bool? {
-    guard let rhs = try rhs() else {
+/// - Throws: Rethrows any error thrown by the autoclosure evaluating `lhs`.
+public func ==?<T: Equatable>(lhs: @autoclosure () throws -> T?, rhs: T) rethrows -> Bool? {
+    guard let lhs = try lhs() else {
         return nil
     }
-    return rhs == lhs
+    return lhs == rhs
 }
