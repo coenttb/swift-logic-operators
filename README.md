@@ -1,6 +1,6 @@
 # Swift Logic Operators
 
-A Swift package providing custom logical operators for optional Boolean values and other useful functions for working with optionals. This package includes operators for AND, OR, NAND, NOR, XOR, and XNOR operations on optional Boolean values.
+A Swift package providing custom logical operators for optional Boolean values.
 
 ## Features
 
