@@ -142,5 +142,6 @@ targets: [
 Finally, import LogicOperators in your .swift file(s), as follows:
 ```swift
 import LogicOperators
-...your swift code ...
+
+...your swift code...
 ```
