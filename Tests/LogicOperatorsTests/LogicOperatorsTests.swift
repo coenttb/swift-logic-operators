@@ -29,20 +29,20 @@ func asdnaslkdas(left: Bool?, right: Bool?) {
         #expect((left ==? right) == .none)
     case (.none, _):
         #expect((left ==? right) == .none)
-    case (_, _):
-        #expect((left ==? right) != .none)
+    case let (.some(l), .some(r)):
+        #expect((left ==? right) == (l == r))
     }
 }
 
 @Test("&&?", arguments: Bool?.allCases, Bool?.allCases)
-func hsdfsksdf(left: Bool?, right: Bool?) {
+func andTest(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (.none, _):
         #expect((left &&? right) == .none)
     case (_, .none):
         #expect((left &&? right) == .none)
-    default:
-        #expect((left &&? right) != .none)
+    case let (.some(l), .some(r)):
+        #expect((left &&? right) == (l && r))
     }
 }
 
@@ -58,17 +58,6 @@ func notTest(optional: Bool?) {
     }
 }
 
-@Test("&&?", arguments: Bool?.allCases, Bool?.allCases)
-func andTest(left: Bool?, right: Bool?) {
-    switch (left, right) {
-    case (.none, _):
-        #expect((left &&? right) == .none)
-    case (_, .none):
-        #expect((left &&? right) == .none)
-    default:
-        #expect((left &&? right) != .none)
-    }
-}
 
 @Test("||?", arguments: Bool?.allCases, Bool?.allCases)
 func orTest(left: Bool?, right: Bool?) {
@@ -77,8 +66,8 @@ func orTest(left: Bool?, right: Bool?) {
         #expect((left ||? right) == .none)
     case (_, .none):
         #expect((left ||? right) == .none)
-    default:
-        #expect((left ||? right) != .none)
+    case let (.some(l), .some(r)):
+        #expect((left ||? right) == (l || r))
     }
 }
 
