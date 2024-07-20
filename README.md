@@ -1,6 +1,6 @@
 # Swift Logic Operators
 
-A Swift package providing custom logical operators for optional Boolean values.
+Swift Logic Operators provides custom logical operators for optional Boolean values.
 
 ## Features
 
@@ -122,10 +122,6 @@ let result = nil !=? true    // result is nil
 ## Tests
 
 This package includes comprehensive tests for all custom logical operators and functions. The tests ensure that the operators behave correctly with all possible combinations of optional Boolean values.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](/LICENCE) file for details.
 
 ## Contributing
 
