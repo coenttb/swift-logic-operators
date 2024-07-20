@@ -20,8 +20,12 @@ infix operator !=? : ComparisonPrecedence
 ///   - rhs: A non-optional value of type `T`.
 /// - Returns: An optional Boolean value that is `nil` if `lhs` is `nil`, `true` if `lhs` is not equal to `rhs`,
 ///            and `false` if `lhs` is equal to `rhs`.
-public func !=?<T: Equatable>(lhs: T?, rhs: T) -> Bool? {
+public func !=?<T: Equatable>(lhs: T?, rhs: @autoclosure () throws -> T?) rethrows -> Bool? {
     guard let lhs = lhs else {
+        return nil
+    }
+    
+    guard let rhs = try rhs() else {
         return nil
     }
     return lhs != rhs
