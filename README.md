@@ -4,14 +4,14 @@ Swift Logic Operators provides custom logical operators for optional Boolean val
 
 ## Features
 
-- Logical AND (`&&?`) for optional Booleans
-- Logical OR (`||?`) for optional Booleans
-- Logical NAND (`&&!?`) for optional Booleans
-- Logical NOR (`||!?`) for optional Booleans
-- Logical XOR (`^?`) for optional Booleans
-- Logical XNOR (`^!?`) for optional Booleans
-- Logical NOT (`!?`) for optional Booleans
-- Equality (`==?`) and Inequality (`!=?`) comparisons for optional values
+- `&&?` Logical AND for optional Booleans
+- `||?` Logical OR for optional Booleans
+- `&&!?` Logical NAND for optional Booleans
+- `||!?` Logical NOR for optional Booleans
+- `^?` Logical XOR for optional Booleans
+- `^!?` Logical XNOR for optional Booleans
+- `!?` Logical NOT for optional Booleans
+- `==?` Equality and `!=?` Inequality comparisons for optional values
 
 ## Installation
 
