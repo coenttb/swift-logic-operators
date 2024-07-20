@@ -12,5 +12,3 @@ public prefix func !<A>(_ closure: @escaping (A) -> Bool) -> (A) -> Bool {
         !closure(a)
     }
 }
-
-

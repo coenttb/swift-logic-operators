@@ -34,27 +34,27 @@ func asdfga() {
     #expect([(Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 4))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sadaf(){
+func sadaf() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 5))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func asdfasdf(){
+func asdfasdf() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 6))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func asdghgrfg(){
+func asdghgrfg() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 7))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sdfgsdfg(){
+func sdfgsdfg() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 8))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func ewsdfsf(){
+func ewsdfsf() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 9))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sdfsdf(){
+func sdfsdf() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 10))
 }
 
@@ -68,6 +68,6 @@ infix operator ^^ : MultiplicationPrecedence
 ///   - radix: The base value.
 ///   - power: The exponent value.
 /// - Returns: The result of raising `radix` to the power of `power`.
-fileprivate func ^^ (radix: Int, power: Int) -> Int {
+private func ^^ (radix: Int, power: Int) -> Int {
     return Int(pow(Double(radix), Double(power)))
 }

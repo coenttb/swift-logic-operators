@@ -13,26 +13,11 @@ extension Target.Dependency {
     static let logicTesting: Self = .target(name: .logicTesting)
 }
 
-extension Target.Dependency {
-
-}
-
-extension [Target.Dependency] {
-    static let shared: Self = [
-    ]
-}
-
 extension Package {
     static func logicOperators(
-        targets: [(
-            name: String,
-            dependencies: [Target.Dependency]
-        )]
+        targets: [(name: String, dependencies: [Target.Dependency])]
     ) -> Package {
-
-        let names = targets.map(\.name)
-
-        return Package(
+        Package(
             name: "swift-logic-operators",
             platforms: [
                 .macOS(.v10_15),
@@ -50,16 +35,13 @@ extension Package {
                         name: .logicTesting,
                         targets: [.logicTesting]
                     )
-                ],
+                ]
             ].flatMap { $0 },
             targets: [
                 targets.map { document in
                     Target.target(
                         name: "\(document.name)",
-                        dependencies: [
-                            .shared,
-                            document.dependencies
-                        ].flatMap { $0 }
+                        dependencies: document.dependencies
                     )
                 },
                 targets.map { document in
@@ -86,6 +68,6 @@ let package = Package.logicOperators(
         (
             name: .logicTesting,
             dependencies: []
-        ),
+        )
     ]
 )
