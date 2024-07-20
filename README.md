@@ -12,7 +12,6 @@ A Swift package providing custom logical operators for optional Boolean values a
 - Logical XNOR (`^!?`) for optional Booleans
 - Logical NOT (`!?`) for optional Booleans
 - Equality (`==?`) and Inequality (`!=?`) comparisons for optional values
-- Map, FlatMap, and Filter functions for optional values
 
 ## Installation
 
