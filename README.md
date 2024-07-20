@@ -1,6 +1,6 @@
 # Swift Logic Operators
 
-A Swift package providing custom logical operators for optional Boolean values.
+Swift Logic Operators provides custom logical operators for optional Boolean values.
 
 ## Features
 
