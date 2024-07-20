@@ -139,7 +139,7 @@ targets: [
 ]
 ```
 
-Import LogicOperators as such in your .swift file(s):
+Finally, import LogicOperators in your .swift file(s), as follows:
 ```swift
 import LogicOperators
 ...your swift code ...
