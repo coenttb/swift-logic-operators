@@ -9,8 +9,6 @@ import Foundation
 import LogicTesting
 import Testing
 
-
-
 @Test("Bool?")
 func iuygsdjf() {
     #expect(Bool?.allCases.count == 3)
@@ -23,43 +21,53 @@ func asdmasf() {
 
 @Test("[(Bool?, Bool?)]?")
 func asdhalk() {
-    #expect([(Bool?, Bool?)].allCases.count == 9)
+    #expect([(Bool?, Bool?)].allCases.count == (3 ^^ 2))
 }
 
 @Test("[(Bool?, Bool?, Bool?)]")
 func nsdhas() {
-    #expect([(Bool?, Bool?, Bool?)].allCases.count == 27)
+    #expect([(Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 3))
 }
 
 @Test("[(Bool?, Bool?, Bool?, Bool?)]")
 func asdfga() {
-    #expect([(Bool?, Bool?, Bool?)].allCases.count == 27)
-}
-@Test("[(Bool?, Bool?, Bool?, Bool?)]")
-func sadaf(){
-    #expect([(Bool?, Bool?, Bool?, Bool?)].allCases.count == 81)
+    #expect([(Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 4))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func asdfasdf(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 243)
+func sadaf(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 5))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func asdghgrfg(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 729)
+func asdfasdf(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 6))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sdfgsdfg(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 2187)
+func asdghgrfg(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 7))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func ewsdfsf(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 6561)
+func sdfgsdfg(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 8))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sdfsdf(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 19683)
+func ewsdfsf(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 9))
 }
 @Test("[(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)]")
-func sdfsdfss(){
-    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == 59049)
+func sdfsdf(){
+    #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 10))
+}
+
+infix operator ^^ : MultiplicationPrecedence
+
+/// Custom infix operator for exponentiation.
+///
+/// The `^^` operator raises the `radix` to the power of `power`.
+///
+/// - Parameters:
+///   - radix: The base value.
+///   - power: The exponent value.
+/// - Returns: The result of raising `radix` to the power of `power`.
+func ^^ (radix: Int, power: Int) -> Int {
+    return Int(pow(Double(radix), Double(power)))
 }
