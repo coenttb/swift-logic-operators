@@ -127,7 +127,7 @@ dependencies: [
 ]
 ```
 
-You can then make LogicOperators available to your Package's target by including LogicOperators in your target's dependencies as follows:
+You can then make LogicOperators available to your package's target by including LogicOperators in the dependencies of any target in your package, as follows:
 ```swift
 targets: [
     .target(
