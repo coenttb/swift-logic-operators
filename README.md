@@ -1,6 +1,3 @@
-Sure! Here is the `README.md` file content formatted properly:
-
-```markdown
 # Swift Logic Operators
 
 A Swift package providing custom logical operators for optional Boolean values and other useful functions for working with optionals. This package includes operators for AND, OR, NAND, NOR, XOR, and XNOR operations on optional Boolean values.
@@ -134,4 +131,3 @@ This project is licensed under the MIT License - see the [LICENSE](../license) f
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
-```
