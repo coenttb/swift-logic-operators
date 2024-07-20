@@ -24,7 +24,7 @@ public func !=?<T: Equatable>(lhs: T?, rhs: @autoclosure () throws -> T?) rethro
     guard let lhs = lhs else {
         return nil
     }
-    
+
     guard let rhs = try rhs() else {
         return nil
     }
