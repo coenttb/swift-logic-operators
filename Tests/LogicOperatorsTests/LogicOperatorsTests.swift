@@ -27,7 +27,9 @@ func asdnaslkdas(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (_, .none):
         #expect((left ==? right) == .none)
-    case (_, .some(_)):
+    case (.none, _):
+        #expect((left ==? right) == .none)
+    case (_, _):
         #expect((left ==? right) != .none)
     }
 }
@@ -44,8 +46,6 @@ func hsdfsksdf(left: Bool?, right: Bool?) {
     }
 }
 
-
-
 @Test("!?", arguments: Bool?.allCases)
 func notTest(optional: Bool?) {
     switch optional {
@@ -55,16 +55,6 @@ func notTest(optional: Bool?) {
         #expect(!?optional == true)
     case .none:
         #expect(!?optional == nil)
-    }
-}
-
-@Test("==?", arguments: Bool?.allCases, Bool?.allCases)
-func equalsTest(left: Bool?, right: Bool?) {
-    switch (left, right) {
-    case (_, .none):
-        #expect((left ==? right) == .none)
-    case (_, .some(_)):
-        #expect((left ==? right) != .none)
     }
 }
 
