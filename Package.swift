@@ -56,13 +56,19 @@ extension Package {
                 targets.map { document in
                     Target.target(
                         name: "\(document.name)",
-                        dependencies: .shared + [] + document.dependencies
+                        dependencies: [
+                            .shared,
+                            document.dependencies
+                        ].flatMap { $0 }
                     )
                 },
                 targets.map { document in
                     Target.testTarget(
                         name: "\(document.name)Tests",
-                        dependencies: [.init(stringLiteral: document.name), document.name != .logicTesting ? .logicTesting : nil].compactMap { $0 }
+                        dependencies: [
+                            Target.Dependency(stringLiteral: document.name),
+                            document.name != .logicTesting ? .logicTesting : nil
+                        ].compactMap { $0 }
                     )
                 }
             ].flatMap { $0 },
@@ -75,15 +81,11 @@ let package = Package.logicOperators(
     targets: [
         (
             name: .logicOperators,
-            dependencies: [
-                
-            ]
+            dependencies: []
         ),
         (
             name: .logicTesting,
-            dependencies: [
-
-            ]
+            dependencies: []
         ),
     ]
 )
