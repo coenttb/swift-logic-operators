@@ -18,9 +18,9 @@ prefix operator !?
 /// - Parameter value: An optional Boolean value.
 /// - Returns: An optional Boolean value that is `nil` if `value` is `nil`, and the logical negation of the unwrapped value otherwise.
 prefix public func !? (
-    value: Bool?
-) -> Bool? {
-    guard let unwrappedValue = value else {
+    value: @autoclosure () throws -> Bool?
+) rethrows -> Bool?  {
+    guard let unwrappedValue = try value() else {
         return nil
     }
     return !unwrappedValue
