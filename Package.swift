@@ -62,7 +62,7 @@ extension Package {
                 targets.map { document in
                     Target.testTarget(
                         name: "\(document.name)Tests",
-                        dependencies: [.init(stringLiteral: document.name), .logicTesting]
+                        dependencies: [.init(stringLiteral: document.name), document.name != .logicTesting ? .logicTesting : nil].compactMap { $0 }
                     )
                 }
             ].flatMap { $0 },

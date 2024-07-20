@@ -68,6 +68,6 @@ infix operator ^^ : MultiplicationPrecedence
 ///   - radix: The base value.
 ///   - power: The exponent value.
 /// - Returns: The result of raising `radix` to the power of `power`.
-func ^^ (radix: Int, power: Int) -> Int {
+fileprivate func ^^ (radix: Int, power: Int) -> Int {
     return Int(pow(Double(radix), Double(power)))
 }
