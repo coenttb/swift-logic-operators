@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Bool: CaseIterable {
+extension Bool: @retroactive CaseIterable {
     public static let allCases: [Bool] = [true, false]
 }
 
@@ -19,7 +19,7 @@ extension Bool: CaseIterable {
 /// The possible cases are: `true`, `false`, and `nil`.
 extension Bool?: @retroactive CaseIterable {
     /// All possible cases for an optional Boolean value.
-    public static var allCases: [Optional<Bool>] = [.some(true), .some(false), .none]
+    public static let allCases: [Optional<Bool>] = [.some(true), .some(false), .none]
 }
 
 /// Extension to provide all possible cases for an array of optional Boolean values.

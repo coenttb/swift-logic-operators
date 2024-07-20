@@ -1,4 +1,4 @@
-// swift-tools-version:5.10.1
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -65,7 +65,8 @@ extension Package {
                         dependencies: [.init(stringLiteral: document.name), .logicTesting]
                     )
                 }
-            ].flatMap { $0 }
+            ].flatMap { $0 },
+            swiftLanguageVersions: [.version("6")]
         )
     }
 }
