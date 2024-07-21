@@ -52,6 +52,7 @@ infix operator ==? : ComparisonPrecedence
 ///     print("An error occurred: \(error)") // Prints "An error occurred: intentionalError"
 /// }
 /// ```
+@_disfavoredOverload
 public func ==?<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?

@@ -17,11 +17,11 @@ func xorTest(lhs: Bool, rhs: Bool) {
     #expect((lhs ^ rhs) == (lhs != rhs))
 }
 //
-//@Test("!?")
+//@Test("!")
 //func negateOptionalClosureTest() throws {
 //    let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 //    var optionalIsEven: ((Int) -> Bool)? = isEven
-//    let isOdd = !?optionalIsEven
+//    let isOdd = !optionalIsEven
 //    
 //    #expect(try isOdd(4) == false)
 //    #expect(try isOdd(5) == true)

@@ -52,6 +52,7 @@ infix operator ||? : LogicalDisjunctionPrecedence
 ///     print("An error occurred: \(error)") // Prints "An error occurred: intentionalError"
 /// }
 /// ```
+@_disfavoredOverload
 public func ||? (
     lhs: Bool?,
     rhs: @autoclosure () throws -> Bool?

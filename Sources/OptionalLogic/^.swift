@@ -13,7 +13,7 @@ infix operator ^? : LogicalDisjunctionPrecedence
 /// Custom infix operator for logical XOR of two optional Equatable values.
 ///
 /// The `^?` operator performs a logical XOR operation on two optional Equatable values.
-/// If either value is `nil`, the result is `nil`. Otherwise, it returns the XOR of the two values using the `!=?` operator.
+/// If either value is `nil`, the result is `nil`. Otherwise, it returns the XOR of the two values using the `!=` operator.
 ///
 /// - Parameters:
 ///   - lhs: An optional Equatable value.
@@ -31,6 +31,7 @@ infix operator ^? : LogicalDisjunctionPrecedence
 /// print(b ^? c) // Prints "nil"
 /// print(b ^? b) // Prints "Optional(false)"
 /// ```
+@_disfavoredOverload
 public func ^?<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?

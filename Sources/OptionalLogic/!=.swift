@@ -1,5 +1,5 @@
 //
-//  !=?.swift
+//  !=.swift
 //
 //
 //  Created by Coen ten Thije Boonkkamp on 19/07/2024.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-// Inequality (!=?) Operator for Optional Values
-infix operator !=? : ComparisonPrecedence
+// Inequality (!=) Operator for Optional Values
+//infix operator != : ComparisonPrecedence
 
 /// Custom infix operator for logical inequality of two optional Equatable values.
 ///
-/// The `!=?` operator performs a logical inequality (not equal) operation on two optional Equatable values.
+/// The `!=` operator performs a logical inequality (not equal) operation on two optional Equatable values.
 /// If either value is `nil`, the result is `nil`. Otherwise, it returns `true` if the values are not equal, and `false` if they are equal.
 ///
 /// - Parameters:
@@ -21,7 +21,7 @@ infix operator !=? : ComparisonPrecedence
 /// - Returns: An optional Boolean value that is `true` if the values are not equal, `false` if they are equal, or `nil` if either input is `nil`.
 /// - Throws: Rethrows any error thrown by the autoclosure.
 ///
-/// The `!=?` operator can be used to safely compare optional Equatable values for inequality, taking advantage of lazy evaluation and error handling.
+/// The `!=` operator can be used to safely compare optional Equatable values for inequality, taking advantage of lazy evaluation and error handling.
 ///
 /// - Example:
 /// ```swift
@@ -30,10 +30,10 @@ infix operator !=? : ComparisonPrecedence
 /// let c: Bool? = nil
 ///
 /// do {
-///     print(try a !=? b) // Prints "Optional(true)"
-///     print(try a !=? c) // Prints "nil"
-///     print(try b !=? c) // Prints "nil"
-///     print(try b !=? b) // Prints "Optional(false)"
+///     print(try a != b) // Prints "Optional(true)"
+///     print(try a != c) // Prints "nil"
+///     print(try b != c) // Prints "nil"
+///     print(try b != b) // Prints "Optional(false)"
 /// } catch {
 ///     print("An error occurred: \(error)")
 /// }
@@ -46,12 +46,12 @@ infix operator !=? : ComparisonPrecedence
 /// let throwingValue: () throws -> Bool? = { throw TestError.intentionalError }
 ///
 /// do {
-///     print(try a !=? throwingValue()) // Will throw an error
+///     print(try a != throwingValue()) // Will throw an error
 /// } catch {
 ///     print("An error occurred: \(error)") // Prints "An error occurred: intentionalError"
 /// }
 /// ```
-public func !=?<T: Equatable>(
+public func !=<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?
 ) rethrows -> Bool? {
