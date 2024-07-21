@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "77CEE5A5-A45B-4EF9-BB0F-7ECBB0893EA7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "OptionalLogicTests",
+        "name" : "OptionalLogicTests"
+      }
+    }
+  ],
+  "version" : 1
+}

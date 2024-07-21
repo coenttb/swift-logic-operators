@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "21EE1CC1-D980-4717-A18A-9324B3510F0F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "PredicateLogicTests",
+        "name" : "PredicateLogicTests"
+      }
+    }
+  ],
+  "version" : 1
+}
