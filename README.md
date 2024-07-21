@@ -4,20 +4,20 @@ Swift Logic Operators provides custom logical operators for optional Boolean val
 
 ## Features
 
-- Logical AND (`??`) for optional Booleans
-- Logical OR (`||?`) for optional Booleans
+- Logical AND (`?`) for optional Booleans
+- Logical OR (`||`) for optional Booleans
 - Logical NAND (`&&!`) for optional Booleans
 - Logical NOR (`||!`) for optional Booleans
-- Logical XOR (`^?`) for optional Booleans
+- Logical XOR (`^`) for optional Booleans
 - Logical XNOR (`^!`) for optional Booleans
 - Logical NOT (`!`) for optional Booleans
-- Equality (`==?`) and Inequality (`!=`) comparisons for optional values
+- Equality (`==`) and Inequality (`!=`) comparisons for optional values
 
 ## Usage
 
 ### Logical Operators for Optional Booleans
 
-#### AND (`??`)
+#### AND (`?`)
 
 Performs a logical AND operation between two optional Boolean values.
 
@@ -27,7 +27,7 @@ let result = true ?? nil    // result is nil
 let result = nil ?? true    // result is nil
 ```
 
-#### OR (`||?`)
+#### OR (`||`)
 
 Performs a logical OR operation between two optional Boolean values.
 
@@ -57,7 +57,7 @@ let result = true ||! nil    // result is nil
 let result = nil ||! true    // result is nil
 ```
 
-#### XOR (`^?`)
+#### XOR (`^`)
 
 Performs a logical XOR operation between two optional Boolean values.
 
@@ -89,7 +89,7 @@ let result = !(nil)     // result is nil
 
 ### Comparison Operators for Optional Values
 
-#### Equality (`==?`)
+#### Equality (`==`)
 
 Compares an optional value with a non-optional value for equality.
 
