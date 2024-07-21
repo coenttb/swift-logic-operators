@@ -55,12 +55,5 @@ public func !=<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?
 ) rethrows -> Bool? {
-    guard let lhs = lhs else {
-        return nil
-    }
-    
-    guard let rhs = try rhs() else {
-        return nil
-    }
-    return lhs != rhs
+    return try !(lhs == rhs())
 }

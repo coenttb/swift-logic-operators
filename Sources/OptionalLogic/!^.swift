@@ -16,8 +16,8 @@ infix operator !^ : LogicalDisjunctionPrecedence
 /// If either value is `nil`, the result is `nil`. Otherwise, it returns the logical XNOR (exclusive NOR) of the two values.
 ///
 /// - Parameters:
-///   - left: An optional Boolean value.
-///   - right: An autoclosure that returns an optional Boolean value. This closure is evaluated lazily and can throw an error.
+///   - lhs: An optional Boolean value.
+///   - rhs: An autoclosure that returns an optional Boolean value. This closure is evaluated lazily and can throw an error.
 /// - Returns: An optional Boolean value that is the XNOR of the two input values, or `nil` if either input is `nil`.
 /// - Throws: Rethrows any error thrown by the autoclosure.
 ///
@@ -53,14 +53,8 @@ infix operator !^ : LogicalDisjunctionPrecedence
 /// }
 /// ```
 public func !^ (
-    left: Bool?,
-    right: @autoclosure () throws -> Bool?
+    lhs: Bool?,
+    rhs: @autoclosure () throws -> Bool?
 ) rethrows -> Bool? {
-    guard let left = left else {
-        return nil
-    }
-    guard let right = try right() else {
-        return nil
-    }
-    return left == right
+    try !(lhs ^ rhs())
 }
