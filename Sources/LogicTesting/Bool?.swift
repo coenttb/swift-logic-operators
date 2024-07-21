@@ -7,12 +7,6 @@
 
 import Foundation
 
-extension Bool: @retroactive CaseIterable {
-    public static let allCases: [Bool] = [true, false]
-}
-
-// MARK: - Extensions for LogicTesting
-
 /// Extension to make `Bool?` conform to `CaseIterable` protocol.
 ///
 /// This extension provides all possible cases for an optional Boolean value.
@@ -25,7 +19,7 @@ extension Bool?: @retroactive CaseIterable {
 /// Extension to provide all possible cases for an array of optional Boolean values.
 extension [Bool?] {
     /// All possible cases for an array containing a single optional Boolean value.
-    public static let allCases: Self = [true, false, nil]
+    public static let allCases: Self = Bool?.allCases
 }
 
 /// Extension to provide all possible cases for an array of tuples containing two optional Boolean values.
@@ -117,3 +111,5 @@ extension [(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?
         }
     }
 }
+
+

@@ -6,36 +6,37 @@ import PackageDescription
 extension String {
     static let logicOperators: Self = "LogicOperators"
     static let logicTesting: Self = "LogicTesting"
+    static let closure: Self = "PredicateLogic"
+    static let optional: Self = "OptionalLogic"
 }
 
 extension Target.Dependency {
     static let logicOperators: Self = .target(name: .logicOperators)
     static let logicTesting: Self = .target(name: .logicTesting)
+    static let closure: Self = .target(name: .closure)
+    static let optional: Self = .target(name: .optional)
 }
 
 extension Package {
     static func logicOperators(
         targets: [(name: String, dependencies: [Target.Dependency])]
     ) -> Package {
-        Package(
+        
+        let names = targets.map(\.name)
+        
+        return Package(
             name: "swift-logic-operators",
             platforms: [
                 .macOS(.v10_15),
                 .iOS(.v13)
             ],
             products: [
-                [
-                    .library(
-                        name: .logicOperators,
-                        targets: [.logicOperators]
-                    )
-                ],
-                [
-                    .library(
-                        name: .logicTesting,
-                        targets: [.logicTesting]
-                    )
-                ]
+                names.map { name in
+                        .library(
+                            name: name,
+                            targets: [.init(stringLiteral: name)]
+                        )
+                }
             ].flatMap { $0 },
             targets: [
                 targets.map { document in
@@ -63,11 +64,22 @@ let package = Package.logicOperators(
     targets: [
         (
             name: .logicOperators,
-            dependencies: []
+            dependencies: [
+                .closure,
+                .optional
+            ]
         ),
         (
             name: .logicTesting,
             dependencies: []
-        )
+        ),
+        (
+            name: .closure,
+            dependencies: []
+        ),
+        (
+            name: .optional,
+            dependencies: []
+        ),
     ]
 )

@@ -16,8 +16,32 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
+        "identifier" : "LogicTestingTests",
+        "name" : "LogicTestingTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "PredicateLogicTests",
+        "name" : "PredicateLogicTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
         "identifier" : "LogicOperatorsTests",
         "name" : "LogicOperatorsTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "OptionalLogicTests",
+        "name" : "OptionalLogicTests"
       }
     }
   ],

@@ -58,16 +58,3 @@ func sdfsdf() {
     #expect([(Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?, Bool?)].allCases.count == (3 ^^ 10))
 }
 
-infix operator ^^ : MultiplicationPrecedence
-
-/// Custom infix operator for exponentiation.
-///
-/// The `^^` operator raises the `radix` to the power of `power`.
-///
-/// - Parameters:
-///   - radix: The base value.
-///   - power: The exponent value.
-/// - Returns: The result of raising `radix` to the power of `power`.
-private func ^^ (radix: Int, power: Int) -> Int {
-    return Int(pow(Double(radix), Double(power)))
-}
