@@ -1,6 +1,6 @@
 //
 //  !.swift
-//  
+//
 //
 //  Created by Coen ten Thije Boonkkamp on 07/07/2024.
 //
@@ -55,14 +55,6 @@ prefix public func ! (
         return nil
     }
     
-    func negate(_ bool: Bool) -> Bool {
-        switch bool {
-        case true:
-            return false
-        case false:
-            return true
-        }
-    }
-    
-    return negate(unwrappedValue)
+    // Ideally, this would defer to Swift's ! operator, but doing so causes ambiguity.
+    return unwrappedValue == false
 }

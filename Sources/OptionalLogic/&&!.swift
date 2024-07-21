@@ -52,7 +52,6 @@ infix operator &&!: LogicalConjunctionPrecedence
 ///     print("An error occurred: \(error)") // Prints "An error occurred: intentionalError"
 /// }
 /// ```
-//@_disfavoredOverload
 public func &&! (
     left: Bool?,
     right: @autoclosure () throws -> Bool?

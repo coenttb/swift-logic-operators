@@ -31,7 +31,6 @@ infix operator ^? : LogicalDisjunctionPrecedence
 /// print(b ^? c) // Prints "nil"
 /// print(b ^? b) // Prints "Optional(false)"
 /// ```
-@_disfavoredOverload
 public func ^?<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?
