@@ -13,16 +13,6 @@ Swift Logic Operators provides custom logical operators for optional Boolean val
 - Logical NOT (`!?`) for optional Booleans
 - Equality (`==?`) and Inequality (`!=?`) comparisons for optional values
 
-## Installation
-
-To add Swift Logic Operators to your project, add the following line to your `Package.swift` file:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/coenttb/swift-logic-operators.git", from: "0.1.0")
-]
-```
-
 ## Usage
 
 ### Logical Operators for Optional Booleans
@@ -126,3 +116,32 @@ This package includes comprehensive tests for all custom logical operators and f
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
+
+## Installation
+
+To install LogicOperators, add the following line to your `Package.swift` file:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/coenttb/swift-logic-operators.git", from: "0.1.0")
+]
+```
+
+You can then make LogicOperators available to your package's target by including LogicOperators in the dependencies of any target in your package, as follows:
+```swift
+targets: [
+    .target(
+        name: "TheNameOfYourTarget",
+        dependencies: [
+            .product(name: "LogicOperators", package: "swift-logic-operators")
+        ]
+    )
+]
+```
+
+Finally, import LogicOperators in your .swift file(s), as follows:
+```swift
+import LogicOperators
+
+...your swift code...
+```
