@@ -46,15 +46,15 @@ func nandTest(bool: Bool?) {
     }
 }
 
-@Test("&&!", arguments: Bool?.allCases, Bool?.allCases)
+@Test("!&&", arguments: Bool?.allCases, Bool?.allCases)
 func nandTest2(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (.none, _):
-        #expect((left &&! right) == .none)
+        #expect((left !&& right) == .none)
     case (_, .none):
-        #expect((left &&! right) == .none)
+        #expect((left !&& right) == .none)
     case (.some(let l), .some(let r)):
-        #expect((left &&! right) == !(l && r))
+        #expect((left !&& right) == !(l && r))
     }
 }
 
@@ -70,15 +70,15 @@ func andTest(left: Bool?, right: Bool?) {
     }
 }
 
-@Test("^!", arguments: Bool?.allCases, Bool?.allCases)
+@Test("!^", arguments: Bool?.allCases, Bool?.allCases)
 func xnorTest(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (.none, _):
-        #expect((left ^! right) == .none)
+        #expect((left !^ right) == .none)
     case (_, .none):
-        #expect((left ^! right) == .none)
+        #expect((left !^ right) == .none)
     case (.some(let l), .some(let r)):
-        #expect((left ^! right) == (l == r))
+        #expect((left !^ right) == (l == r))
     }
 }
 
@@ -94,15 +94,15 @@ func equalsTest(left: Bool?, right: Bool?) {
     }
 }
 
-@Test("||!", arguments: Bool?.allCases, Bool?.allCases)
+@Test("!||", arguments: Bool?.allCases, Bool?.allCases)
 func norTest(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (.none, _):
-        #expect((left ||! right) == .none)
+        #expect((left !|| right) == .none)
     case (_, .none):
-        #expect((left ||! right) == .none)
+        #expect((left !|| right) == .none)
     case (.some(let l), .some(let r)):
-        #expect((left ||! right) == !(l || r))
+        #expect((left !|| right) == !(l || r))
     }
 }
 

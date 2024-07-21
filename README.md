@@ -6,10 +6,10 @@ Swift Logic Operators provides custom logical operators for optional Boolean val
 
 - Logical AND (`?`) for optional Booleans
 - Logical OR (`||`) for optional Booleans
-- Logical NAND (`&&!`) for optional Booleans
-- Logical NOR (`||!`) for optional Booleans
+- Logical NAND (`!&&`) for optional Booleans
+- Logical NOR (`!||`) for optional Booleans
 - Logical XOR (`^`) for optional Booleans
-- Logical XNOR (`^!`) for optional Booleans
+- Logical XNOR (`!^`) for optional Booleans
 - Logical NOT (`!`) for optional Booleans
 - Equality (`==`) and Inequality (`!=`) comparisons for optional values
 
@@ -17,14 +17,15 @@ Swift Logic Operators provides custom logical operators for optional Boolean val
 
 ### Logical Operators for Optional Booleans
 
-#### AND (`?`)
+#### AND (`&&`)
 
 Performs a logical AND operation between two optional Boolean values.
 
 ```swift
-let result = true ?? false  // result is false
-let result = true ?? nil    // result is nil
-let result = nil ?? true    // result is nil
+let result = true && false          // result is false
+let result = true && nil            // result is nil
+let result = nil && (true || false) // result is nil
+let result = (true || false) && nil // result is nil
 ```
 
 #### OR (`||`)
@@ -32,29 +33,29 @@ let result = nil ?? true    // result is nil
 Performs a logical OR operation between two optional Boolean values.
 
 ```swift
-let result = true ||? false  // result is true
-let result = true ||? nil    // result is nil
-let result = nil ||? true    // result is nil
+let result = true || false  // result is true
+let result = true || nil    // result is nil
+let result = nil || true    // result is nil
 ```
 
-#### NAND (`&&!`)
+#### NAND (`!&&`)
 
 Performs a logical NAND operation between two optional Boolean values.
 
 ```swift
-let result = true &&! false  // result is true
-let result = true &&! nil    // result is nil
-let result is nil &&! true   // result is nil
+let result = true !&& false  // result is true
+let result = true !&& nil    // result is nil
+let result is nil !&& true   // result is nil
 ```
 
-#### NOR (`||!`)
+#### NOR (`!||`)
 
 Performs a logical NOR operation between two optional Boolean values.
 
 ```swift
-let result = true ||! false  // result is false
-let result = true ||! nil    // result is nil
-let result = nil ||! true    // result is nil
+let result = true !|| false  // result is false
+let result = true !|| nil    // result is nil
+let result = nil !|| true    // result is nil
 ```
 
 #### XOR (`^`)
@@ -62,19 +63,19 @@ let result = nil ||! true    // result is nil
 Performs a logical XOR operation between two optional Boolean values.
 
 ```swift
-let result = true ^? false  // result is true
-let result = true ^? nil    // result is nil
-let result = nil ^? true    // result is nil
+let result = true ^ false  // result is true
+let result = true ^ nil    // result is nil
+let result = nil ^ true    // result is nil
 ```
 
-#### XNOR (`^!`)
+#### XNOR (`!^`)
 
 Performs a logical XNOR operation between two optional Boolean values.
 
 ```swift
-let result = true ^! false  // result is false
-let result = true ^! nil    // result is nil
-let result = nil ^! true    // result is nil
+let result = true !^ false  // result is false
+let result = true !^ nil    // result is nil
+let result = nil !^ true    // result is nil
 ```
 
 #### NOT (`!`)
@@ -94,9 +95,9 @@ let result = !(nil)     // result is nil
 Compares an optional value with a non-optional value for equality.
 
 ```swift
-let result = true ==? true   // result is true
-let result = true ==? false  // result is false
-let result = nil ==? true    // result is nil
+let result = true == true   // result is true
+let result = true == false  // result is false
+let result = nil == true    // result is nil
 ```
 
 #### Inequality (`!=`)
