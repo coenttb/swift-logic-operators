@@ -22,9 +22,9 @@ Swift Logic Operators provides logical operators for optional Boolean values and
 Performs a logical NOT operation on an optional Boolean value.
 
 ```swift
-print(try !true)  // Prints "Optional(false)"
-print(try !false) // Prints "Optional(true)"
-print(try !nil)   // Prints "nil"
+print(!true)  // Prints "Optional(false)"
+print(!false) // Prints "Optional(true)"
+print(!nil)   // Prints "nil"
 ```
 
 #### AND (`&&`)
@@ -32,11 +32,11 @@ print(try !nil)   // Prints "nil"
 Performs a logical AND operation between two optional Boolean values.
 
 ```swift
-print(try true && false) // Prints "Optional(false)"
-print(try true && nil)   // Prints "nil"
-print(try false && nil)  // Prints "nil"
-print(try false && false) // Prints "Optional(false)"
-print(try true && true)  // Prints "Optional(true)"
+print(true && false)    // Prints "Optional(false)"
+print(true && nil)      // Prints "nil"
+print(false && nil)     // Prints "nil"
+print(false && false)   // Prints "Optional(false)"
+print(true && true)     // Prints "Optional(true)"
 ```
 
 #### NAND (`!&&`)
@@ -44,11 +44,11 @@ print(try true && true)  // Prints "Optional(true)"
 Performs a logical NAND operation between two optional Boolean values.
 
 ```swift
-print(try true !&& false) // Prints "Optional(true)"
-print(try true !&& nil)   // Prints "nil"
-print(try false !&& nil)  // Prints "nil"
-print(try false !&& false) // Prints "Optional(true)"
-print(try true !&& true)  // Prints "Optional(false)"
+print(true !&& false)   // Prints "Optional(true)"
+print(true !&& nil)     // Prints "nil"
+print(false !&& nil)    // Prints "nil"
+print(false !&& false)  // Prints "Optional(true)"
+print(true !&& true)    // Prints "Optional(false)"
 ```
 
 #### OR (`||`)
@@ -56,11 +56,11 @@ print(try true !&& true)  // Prints "Optional(false)"
 Performs a logical OR operation between two optional Boolean values.
 
 ```swift
-print(try true || false) // Prints "Optional(true)"
-print(try true || nil)   // Prints "Optional(true)"
-print(try false || nil)  // Prints "nil"
-print(try false || false) // Prints "Optional(false)"
-print(try nil || nil)    // Prints "nil"
+print(true || false)    // Prints "Optional(true)"
+print(true || nil)      // Prints "Optional(true)"
+print(false || nil)     // Prints "nil"
+print(false || false)   // Prints "Optional(false)"
+print(nil || nil)       // Prints "nil"
 ```
 
 #### NOR (`!||`)
@@ -68,11 +68,11 @@ print(try nil || nil)    // Prints "nil"
 Performs a logical NOR operation between two optional Boolean values.
 
 ```swift
-print(try true !|| false) // Prints "Optional(false)"
-print(try true !|| nil)   // Prints "nil"
-print(try false !|| nil)  // Prints "nil"
-print(try false !|| false) // Prints "Optional(true)"
-print(try nil !|| nil)    // Prints "nil"
+print(true !|| false)   // Prints "Optional(false)"
+print(true !|| nil)     // Prints "nil"
+print(false !|| nil)    // Prints "nil"
+print(false !|| false)  // Prints "Optional(true)"
+print(nil !|| nil)      // Prints "nil"
 ```
 
 #### Equality (`==`)
@@ -102,9 +102,9 @@ print(nil != nil)    // Prints "nil"
 Performs a logical XOR operation between two optional Boolean values.
 
 ```swift
-print(true ^ false) // Prints "Optional(true)"
-print(true ^ nil)   // Prints "nil"
-print(false ^ nil)  // Prints "nil"
+print(true ^ false)  // Prints "Optional(true)"
+print(true ^ nil)    // Prints "nil"
+print(false ^ nil)   // Prints "nil"
 print(false ^ false) // Prints "Optional(false)"
 ```
 
@@ -113,9 +113,9 @@ print(false ^ false) // Prints "Optional(false)"
 Performs a logical XNOR operation between two optional Boolean values.
 
 ```swift
-print(true !^ false) // Prints "Optional(false)"
-print(true !^ nil)   // Prints "nil"
-print(false !^ nil)  // Prints "nil"
+print(true !^ false)  // Prints "Optional(false)"
+print(true !^ nil)    // Prints "nil"
+print(false !^ nil)   // Prints "nil"
 print(false !^ false) // Prints "Optional(true)"
 ```
 

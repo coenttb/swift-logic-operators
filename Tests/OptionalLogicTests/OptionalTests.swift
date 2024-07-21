@@ -117,3 +117,9 @@ func orTest(left: Bool?, right: Bool?) {
         #expect((left ||? right) == (l || r))
     }
 }
+
+
+@Test("||?", arguments: Bool?.allCases, Bool?.allCases)
+func asdfasdfa(left: Bool?, right: Bool?) {
+    #expect((true && nil) == nil)
+}
