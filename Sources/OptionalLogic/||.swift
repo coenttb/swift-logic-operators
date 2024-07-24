@@ -7,9 +7,6 @@
 
 import Foundation
 
-// OR (||) Operator for Optional Booleans
-infix operator || : LogicalDisjunctionPrecedence
-
 /// Custom infix operator for logical OR of two optional Boolean values.
 ///
 /// The `||` operator performs a logical OR operation on two optional Boolean values.

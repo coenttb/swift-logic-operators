@@ -7,9 +7,6 @@
 
 import Foundation
 
-// Equality (==) Operator for Optional Values
-infix operator == : ComparisonPrecedence
-
 /// Custom infix operator for logical equality of two optional Equatable values.
 ///
 /// The `==` operator performs a logical equality operation on two optional Equatable values.
