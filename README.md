@@ -37,6 +37,7 @@ true && nil    == nil
 false && nil   == nil
 false && false == false
 true && true   == true
+nil && nil     == nil
 ```
 
 #### NAND (`!&&`)
@@ -49,7 +50,7 @@ true !&& nil    == nil
 false !&& nil   == nil
 false !&& false == true
 true !&& true   == false
-nil && nil    == nil
+nil !&& nil     == nil
 ```
 
 #### OR (`||`)
