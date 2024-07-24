@@ -117,19 +117,3 @@ func orTest(left: Bool?, right: Bool?) {
         #expect((left || right) == (l || r))
     }
 }
-
-@Test("||", arguments: Bool?.allCases, Bool?.allCases)
-func asdfasdfa(left: Bool?, right: Bool?) {
-    #expect((true && nil) == nil)
-}
-
-@Test("&&3")
-func asdfassdfasdf() {
-    #expect(true && false  == false)
-}
-
-@Test("&&3")
-func asasdadawad() {
-    #expect((nil || nil) == Bool?.none)
-}
-
