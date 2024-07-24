@@ -106,19 +106,30 @@ func norTest(left: Bool?, right: Bool?) {
     }
 }
 
-@Test("||?", arguments: Bool?.allCases, Bool?.allCases)
+@Test("||", arguments: Bool?.allCases, Bool?.allCases)
 func orTest(left: Bool?, right: Bool?) {
     switch (left, right) {
     case (.none, _):
-        #expect((left ||? right) == .none)
+        #expect((left || right) == .none)
     case (_, .none):
-        #expect((left ||? right) == .none)
+        #expect((left || right) == .none)
     case let (.some(l), .some(r)):
-        #expect((left ||? right) == (l || r))
+        #expect((left || right) == (l || r))
     }
 }
 
-@Test("||?", arguments: Bool?.allCases, Bool?.allCases)
+@Test("||", arguments: Bool?.allCases, Bool?.allCases)
 func asdfasdfa(left: Bool?, right: Bool?) {
     #expect((true && nil) == nil)
 }
+
+@Test("&&3")
+func asdfassdfasdf() {
+    #expect(true && false  == false)
+}
+
+@Test("&&3")
+func asasdadawad() {
+    #expect((nil || nil) == Bool?.none)
+}
+

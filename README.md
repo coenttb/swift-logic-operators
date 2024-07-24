@@ -22,9 +22,9 @@ Swift Logic Operators provides logical operators for optional Boolean values and
 Performs a logical NOT operation on an optional Boolean value.
 
 ```swift
-print(!true)  // Prints "Optional(false)"
-print(!false) // Prints "Optional(true)"
-print(!nil)   // Prints "nil"
+!true  = false
+!false = true
+!nil   = nil
 ```
 
 #### AND (`&&`)
@@ -32,11 +32,11 @@ print(!nil)   // Prints "nil"
 Performs a logical AND operation between two optional Boolean values.
 
 ```swift
-print(true && false)    // Prints "Optional(false)"
-print(true && nil)      // Prints "nil"
-print(false && nil)     // Prints "nil"
-print(false && false)   // Prints "Optional(false)"
-print(true && true)     // Prints "Optional(true)"
+true && false  == false
+true && nil    == nil
+false && nil   == nil
+false && false == false
+true && true   == true
 ```
 
 #### NAND (`!&&`)
@@ -44,11 +44,12 @@ print(true && true)     // Prints "Optional(true)"
 Performs a logical NAND operation between two optional Boolean values.
 
 ```swift
-print(true !&& false)   // Prints "Optional(true)"
-print(true !&& nil)     // Prints "nil"
-print(false !&& nil)    // Prints "nil"
-print(false !&& false)  // Prints "Optional(true)"
-print(true !&& true)    // Prints "Optional(false)"
+true !&& false  == true
+true !&& nil    == nil
+false !&& nil   == nil
+false !&& false == true
+true !&& true   == false
+nil && nil    == nil
 ```
 
 #### OR (`||`)
@@ -56,11 +57,11 @@ print(true !&& true)    // Prints "Optional(false)"
 Performs a logical OR operation between two optional Boolean values.
 
 ```swift
-print(true || false)    // Prints "Optional(true)"
-print(true || nil)      // Prints "Optional(true)"
-print(false || nil)     // Prints "nil"
-print(false || false)   // Prints "Optional(false)"
-print(nil || nil)       // Prints "nil"
+true || false   == true
+true || nil     == true
+false || nil    == nil
+false || false  == false
+nil || nil      == nil
 ```
 
 #### NOR (`!||`)
@@ -68,11 +69,11 @@ print(nil || nil)       // Prints "nil"
 Performs a logical NOR operation between two optional Boolean values.
 
 ```swift
-print(true !|| false)   // Prints "Optional(false)"
-print(true !|| nil)     // Prints "nil"
-print(false !|| nil)    // Prints "nil"
-print(false !|| false)  // Prints "Optional(true)"
-print(nil !|| nil)      // Prints "nil"
+true !|| false  == false
+true !|| nil    == nil
+false !|| nil   == nil
+false !|| false == true
+nil !|| nil     == nil
 ```
 
 #### Equality (`==`)
@@ -80,10 +81,10 @@ print(nil !|| nil)      // Prints "nil"
 Checks for equality between two optional Boolean values.
 
 ```swift
-print(true == false) // Prints "Optional(false)"
-print(true == true)  // Prints "Optional(true)"
-print(true == nil)   // Prints "nil"
-print(nil == nil)    // Prints "nil"
+true == false == false
+true == true  == true
+true == nil   == nil
+nil == nil    == nil
 ```
 
 #### Inequality (`!=`)
@@ -91,10 +92,10 @@ print(nil == nil)    // Prints "nil"
 Checks for inequality between two optional Boolean values.
 
 ```swift
-print(true != false) // Prints "Optional(true)"
-print(true != true)  // Prints "Optional(false)"
-print(true != nil)   // Prints "nil"
-print(nil != nil)    // Prints "nil"
+true != false == true
+true != true  == false
+true != nil   == nil
+nil != nil    == nil
 ```
 
 #### XOR (`^`)
@@ -102,10 +103,10 @@ print(nil != nil)    // Prints "nil"
 Performs a logical XOR operation between two optional Boolean values.
 
 ```swift
-print(true ^ false)  // Prints "Optional(true)"
-print(true ^ nil)    // Prints "nil"
-print(false ^ nil)   // Prints "nil"
-print(false ^ false) // Prints "Optional(false)"
+true ^ false   == true
+true ^ nil     == nil
+false ^ nil    == nil
+false ^ false) == false
 ```
 
 #### XNOR (`!^`)
@@ -113,10 +114,10 @@ print(false ^ false) // Prints "Optional(false)"
 Performs a logical XNOR operation between two optional Boolean values.
 
 ```swift
-print(true !^ false)  // Prints "Optional(false)"
-print(true !^ nil)    // Prints "nil"
-print(false !^ nil)   // Prints "nil"
-print(false !^ false) // Prints "Optional(true)"
+true !^ false  == false
+true !^ nil    == nil
+false !^ nil   == nil
+false !^ false == true
 ```
 
 ### Logical Operators for Predicates
@@ -130,10 +131,10 @@ let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isPositive: (Int) -> Bool = { $0 > 0 }
 let isEvenAndPositive = isEven && isPositive
 
-print(isEvenAndPositive(4))  // true
-print(isEvenAndPositive(-4)) // false
-print(isEvenAndPositive(3))  // false
-print(isEvenAndPositive(-3)) // false
+isEvenAndPositive(4)  == true
+isEvenAndPositive(-4) == false
+isEvenAndPositive(3)  == false
+isEvenAndPositive(-3) == false
 ```
 
 #### OR (`||`)
@@ -145,10 +146,10 @@ let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isNegative: (Int) -> Bool = { $0 < 0 }
 let isEvenOrNegative = isEven || isNegative
 
-print(isEvenOrNegative(4))  // true
-print(isEvenOrNegative(-4)) // true
-print(isEvenOrNegative(3))  // false
-print(isEvenOrNegative(-3)) // true
+isEvenOrNegative(4)  == true
+isEvenOrNegative(-4) == true
+isEvenOrNegative(3)  == false
+isEvenOrNegative(-3) == true
 ```
 
 #### NOT (`!`)
@@ -159,10 +160,10 @@ Performs a logical NOT operation on the result of a Boolean-returning closure.
 let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isOdd = !isEven
 
-print(isEven(4))  // true
-print(isOdd(4))   // false
-print(isEven(5))  // false
-print(isOdd(5))   // true
+isEven(4) = true
+isOdd(4)  = false
+isEven(5) = false
+isOdd(5)  = true
 ```
 
 #### EQUAL (`==`)
@@ -174,10 +175,10 @@ let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isPositive: (Int) -> Bool = { $0 > 0 }
 let isEvenAndPositiveEqual = isEven == isPositive
 
-print(isEvenAndPositiveEqual(4))  // false
-print(isEvenAndPositiveEqual(-4)) // false
-print(isEvenAndPositiveEqual(3))  // false
-print(isEvenAndPositiveEqual(-3)) // true
+isEvenAndPositiveEqual(4)  == false
+isEvenAndPositiveEqual(-4) == false
+isEvenAndPositiveEqual(3)  == false
+isEvenAndPositiveEqual(-3) == true
 ```
 
 #### NOT EQUAL (`!=`)
@@ -189,10 +190,10 @@ let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isPositive: (Int) -> Bool = { $0 > 0 }
 let isEvenAndPositiveDifferent = isEven != isPositive
 
-print(isEvenAndPositiveDifferent(4))  // true
-print(isEvenAndPositiveDifferent(-4)) // true
-print(isEvenAndPositiveDifferent(3))  // true
-print(isEvenAndPositiveDifferent(-3)) // false
+isEvenAndPositiveDifferent(4)  = true
+isEvenAndPositiveDifferent(-4) = true
+isEvenAndPositiveDifferent(3)  = true
+isEvenAndPositiveDifferent(-3) = false
 ```
 
 #### XOR (`^`)
@@ -204,10 +205,10 @@ let isEven: (Int) -> Bool = { $0 % 2 == 0 }
 let isPositive: (Int) -> Bool = { $0 > 0 }
 let isEvenOrPositive = isEven ^ isPositive
 
-print(isEvenOrPositive(4))  // false
-print(isEvenOrPositive(-4)) // true
-print(isEvenOrPositive(3))  // true
-print(isEvenOrPositive(-3)) // false
+isEvenOrPositive(4)  == false
+isEvenOrPositive(-4) == true
+isEvenOrPositive(3)  == true
+isEvenOrPositive(-3) == false
 ```
 
 ## Tests
