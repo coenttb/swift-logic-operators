@@ -121,8 +121,6 @@ print(false !^ false) // Prints "Optional(true)"
 
 ### Logical Operators for Predicates
 
-Here are the sections for each operator based on the provided files:
-
 #### AND (`&&`)
 
 Performs a logical AND operation between two Boolean-returning closures.
