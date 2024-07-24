@@ -22,9 +22,9 @@ Swift Logic Operators provides logical operators for optional Boolean values and
 Performs a logical NOT operation on an optional Boolean value.
 
 ```swift
-!true  = false
-!false = true
-!nil   = nil
+!true  == false
+!false == true
+!nil   == nil
 ```
 
 #### AND (`&&`)
@@ -37,6 +37,7 @@ true && nil    == nil
 false && nil   == nil
 false && false == false
 true && true   == true
+nil && nil     == nil
 ```
 
 #### NAND (`!&&`)
@@ -49,7 +50,7 @@ true !&& nil    == nil
 false !&& nil   == nil
 false !&& false == true
 true !&& true   == false
-nil && nil    == nil
+nil !&& nil     == nil
 ```
 
 #### OR (`||`)
