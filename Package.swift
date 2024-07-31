@@ -11,10 +11,10 @@ extension String {
 }
 
 extension Target.Dependency {
-    static let logicOperators: Self = .target(name: .logicOperators)
-    static let logicTesting: Self = .target(name: .logicTesting)
-    static let closure: Self = .target(name: .closure)
-    static let optional: Self = .target(name: .optional)
+    static var logicOperators: Self { .target(name: .logicOperators) }
+    static var logicTesting: Self { .target(name: .logicTesting) }
+    static var closure: Self { .target(name: .closure) }
+    static var optional: Self { .target(name: .optional) }
 }
 
 extension Package {
