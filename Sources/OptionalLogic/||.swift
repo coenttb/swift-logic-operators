@@ -53,11 +53,14 @@ public func || (
     lhs: Bool?,
     rhs: @autoclosure () throws -> Bool?
 ) rethrows -> Bool? {
-    guard let lhs = lhs else {
+    if let lhs = lhs, lhs {
+        return true
+    }
+    if let rhs = try rhs(), rhs {
+        return true
+    }
+    if try lhs == nil && (try rhs() == nil) {
         return nil
     }
-    guard let rhs = try rhs() else {
-        return nil
-    }
-    return lhs || rhs
+    return false
 }
