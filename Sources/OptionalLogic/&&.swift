@@ -57,12 +57,17 @@ public func && (
     left: Bool?,
     right: @autoclosure () throws -> Bool?
 ) rethrows -> Bool? {
-    guard let left = left else {
-        return nil
+    if let left = left, !left {
+        return false
     }
-    guard let right = try right() else {
-        return nil
+    
+    if let right = try right(), !right {
+        return false
     }
-    return left && right
-}
 
+    if try left == true && right() == true {
+        return true
+    }
+
+    return nil
+}
