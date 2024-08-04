@@ -56,5 +56,7 @@ public func !|| (
     lhs: Bool?,
     rhs: @autoclosure () throws -> Bool?
 ) rethrows -> Bool? {
-    return try !(lhs || rhs())
+    let x: Bool? = try (lhs || rhs())
+    
+    return !x
 }

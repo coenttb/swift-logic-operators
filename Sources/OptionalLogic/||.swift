@@ -53,13 +53,16 @@ public func || (
     lhs: Bool?,
     rhs: @autoclosure () throws -> Bool?
 ) rethrows -> Bool? {
-    if let lhs = lhs, lhs {
+    if lhs == true {
         return true
     }
-    if let rhs = try rhs(), rhs {
+    
+    let rhs = try rhs()
+    
+    if rhs == true {
         return true
     }
-    if try lhs == nil && (try rhs() == nil) {
+    if lhs == nil || (rhs == nil) {
         return nil
     }
     return false

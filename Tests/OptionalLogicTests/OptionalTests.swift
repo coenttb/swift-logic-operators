@@ -97,23 +97,27 @@ func equalsTest(left: Bool?, right: Bool?) {
 @Test("!||", arguments: Bool?.allCases, Bool?.allCases)
 func norTest(left: Bool?, right: Bool?) {
     switch (left, right) {
-    case (.none, _):
-        #expect((left !|| right) == .none)
-    case (_, .none):
-        #expect((left !|| right) == .none)
-    case (.some(let l), .some(let r)):
+    case let (.some(l), .some(r)):
         #expect((left !|| right) == !(l || r))
+    case let (.none, .some(r)):
+        #expect((left !|| right) == (r == true ? false : nil))
+    case let (.some(l), .none):
+        #expect((left !|| right) == (l == true ? false : nil))
+    case (.none, .none):
+        #expect((left !|| right) == nil)
     }
 }
 
 @Test("||", arguments: Bool?.allCases, Bool?.allCases)
 func orTest(left: Bool?, right: Bool?) {
     switch (left, right) {
-    case (.none, _):
-        #expect((left || right) == .none)
-    case (_, .none):
-        #expect((left || right) == .none)
     case let (.some(l), .some(r)):
         #expect((left || right) == (l || r))
+    case let (.none, .some(r)):
+        #expect((left || right) == (r == true ? true : nil))
+    case let (.some(l), .none):
+        #expect((left || right) == (l == true ? true : nil))
+    case (.none, .none):
+        #expect((left || right) == .none)
     }
 }
