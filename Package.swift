@@ -8,6 +8,7 @@ extension String {
     static let logicTesting: Self = "LogicTesting"
     static let closure: Self = "PredicateLogic"
     static let optional: Self = "OptionalLogic"
+    static let optionalViews: Self = "OptionalViews"
 }
 
 extension Target.Dependency {
@@ -47,7 +48,7 @@ extension Package {
                 },
                 targets.map { document in
                     Target.testTarget(
-                        name: "\(document.name)Tests",
+                        name: "\(document.name) Tests",
                         dependencies: [
                             Target.Dependency(stringLiteral: document.name),
                             document.name != .logicTesting ? .logicTesting : nil
@@ -79,6 +80,10 @@ let package = Package.logicOperators(
         ),
         (
             name: .optional,
+            dependencies: []
+        ),
+        (
+            name: .optionalViews,
             dependencies: []
         ),
     ]
