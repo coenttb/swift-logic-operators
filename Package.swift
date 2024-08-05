@@ -28,8 +28,8 @@ extension Package {
         return Package(
             name: "swift-logic-operators",
             platforms: [
-                .macOS(.v10_15),
-                .iOS(.v13)
+                .macOS(.v14),
+                .iOS(.v17)
             ],
             products: [
                 names.map { name in
@@ -84,7 +84,9 @@ let package = Package.logicOperators(
         ),
         (
             name: .optionalViews,
-            dependencies: []
+            dependencies: [
+                .optional
+            ]
         ),
     ]
 )

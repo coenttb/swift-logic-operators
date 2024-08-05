@@ -7,6 +7,7 @@
 
 #if canImport(SwiftUI)
 import SwiftUI
+import OptionalLogic
 
 extension Bool?:@retroactive CaseIterable {
     public static let allCases: [Self] = [true, false, nil]
@@ -67,7 +68,7 @@ extension Bool? {
                         isOn = nil
                     } label: {
                         Text("nil")
-                    }
+                    }.buttonStyle(.borderless)
 
                 }
             } else {
@@ -80,6 +81,76 @@ extension Bool? {
     }
 }
 
+
+#Preview("Trout") {
+    
+    @Previewable @State var isOn: Bool? = nil
+    
+    NavigationStack {
+        Form {
+            Bool?.Toggle("Label", isOn: $isOn)
+            
+            HStack(spacing: 5) {
+                RoundedRectangle(cornerRadius: 5)
+                .fill( Color.isOn(isOn) )
+                    .frame(width: 15, height: 15)
+                    
+                    .onTapGesture {
+                        isOn = switch isOn {
+                        case .some(true):
+                            false
+                        case .some(false):
+                            nil
+                        case .none:
+                            true
+                        }
+                    }
+                Text("Label")
+                    .onTapGesture {
+                        isOn = switch isOn {
+                        case .some(true):
+                            false
+                        case .some(false):
+                            nil
+                        case .none:
+                            true
+                        }
+                    }
+                Spacer()
+                
+            }
+            .frame(height: 30)
+            
+        }
+        .frame(width: 200, height: 200)
+    }
+}
+#if os(macOS)
+extension NSColor {
+    static func isOn(_ isOn: Bool?) -> NSColor {
+        switch isOn {
+        case .some(true): return .green
+        case .some(false): return .red
+        case .none: return .controlColor
+        }
+    }
+}
+
+
+extension Color {
+    static func isOn(_ isOn: Bool?) -> Color {
+        Color(nsColor: .isOn(isOn))
+    }
+}
+#endif
+
+#if os(iOS)
+extension Color {
+    static func isOn(_ isOn: Bool?) -> Color {
+        Color.green
+    }
+}
+#endif
 
 #endif
 

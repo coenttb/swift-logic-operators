@@ -17,7 +17,7 @@ extension Bool? {
         var content: (Bool?)->Content
         var label: ()->Label
         @Binding var isOn: Bool?
-
+        
         public init(
             _ content: @escaping (Bool?)->Content,
             _ label: @escaping ()->Label,
@@ -29,7 +29,7 @@ extension Bool? {
         }
         
         public init(
-            _ label: String = "",
+            _ label: String,
             isOn: Binding<Bool?>
         )
         where
@@ -54,19 +54,76 @@ extension Bool? {
         
         public var body: some SwiftUI.View {
             
-            SwiftUI.Picker(
-                selection: $isOn,
-                content: {
-                    ForEach(
-                        Bool?.allCases,
-                        id: \.self,
-                        content: self.content
+#if os(macOS)
+            HStack(spacing: 5) {
+                SwiftUI.Picker(
+                    selection: $isOn.animation(),
+                    content: {
+                        ForEach(
+                            Bool?.allCases,
+                            id: \.self,
+                            content: self.content
+                        )
+                    },
+                    label: EmptyView.init
+                )
+                .pickerStyle(.segmented)
+                .frame(width: 140)
+                .fixedSize(horizontal: true, vertical: false)
+
+                self.label()
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .lineLimit(nil)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                Spacer()
+            }
+#endif
+            
+#if os(iOS)
+            VStack(spacing: 5) {
+                self.label()
+
+                HStack {
+                    Spacer()
+                    SwiftUI.Picker(
+                        selection: $isOn.animation(),
+                        content: {
+                            ForEach(
+                                Bool?.allCases,
+                                id: \.self,
+                                content: self.content
+                            )
+                        },
+                        label: EmptyView.init
                     )
-                },
-                label: self.label
-            )
-            .pickerStyle(.segmented)
+                    .pickerStyle(.segmented)
+                    .frame(width: 140)
+                    .fixedSize(horizontal: true, vertical: false)
+                }
+                
+                
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .lineLimit(nil)
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                Spacer()
+            }
+#endif
         }
     }
+}
+
+#Preview {
+    
+    @Previewable @State var isOn: Bool? = nil
+    @Previewable @State var isOn2: Bool? = nil
+    
+    NavigationStack {
+        Form {
+            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn)
+            
+            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn2)
+        }
+    }
+    
 }
 #endif
