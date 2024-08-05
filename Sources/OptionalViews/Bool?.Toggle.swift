@@ -82,49 +82,51 @@ extension Bool? {
 }
 
 
-#Preview("Trout") {
-    
-    @Previewable @State var isOn: Bool? = nil
-    
-    NavigationStack {
-        Form {
-            Bool?.Toggle("Label", isOn: $isOn)
-            
-            HStack(spacing: 5) {
-                RoundedRectangle(cornerRadius: 5)
-                .fill( Color.isOn(isOn) )
-                    .frame(width: 15, height: 15)
-                    
-                    .onTapGesture {
-                        isOn = switch isOn {
-                        case .some(true):
-                            false
-                        case .some(false):
-                            nil
-                        case .none:
-                            true
-                        }
-                    }
-                Text("Label")
-                    .onTapGesture {
-                        isOn = switch isOn {
-                        case .some(true):
-                            false
-                        case .some(false):
-                            nil
-                        case .none:
-                            true
-                        }
-                    }
-                Spacer()
-                
-            }
-            .frame(height: 30)
-            
-        }
-        .frame(width: 200, height: 200)
-    }
-}
+//#Preview("Test") {
+//    
+//    @Previewable @State var isOn: Bool? = nil
+//    
+//    NavigationStack {
+//        Form {
+//            Bool?.Toggle("Label", isOn: $isOn)
+//            
+//            HStack(spacing: 5) {
+//                RoundedRectangle(cornerRadius: 5)
+//                .fill( Color.isOn(isOn) )
+//                    .frame(width: 15, height: 15)
+//                    
+//                    .onTapGesture {
+//                        isOn = switch isOn {
+//                        case .some(true):
+//                            false
+//                        case .some(false):
+//                            nil
+//                        case .none:
+//                            true
+//                        }
+//                    }
+//                Text("Label")
+//                    .onTapGesture {
+//                        isOn = switch isOn {
+//                        case .some(true):
+//                            false
+//                        case .some(false):
+//                            nil
+//                        case .none:
+//                            true
+//                        }
+//                    }
+//                Spacer()
+//                
+//            }
+//            .frame(height: 30)
+//            
+//        }
+//        .frame(width: 200, height: 200)
+//    }
+//}
+//
+
 #if os(macOS)
 extension NSColor {
     static func isOn(_ isOn: Bool?) -> NSColor {
@@ -136,12 +138,12 @@ extension NSColor {
     }
 }
 
-
-extension Color {
-    static func isOn(_ isOn: Bool?) -> Color {
-        Color(nsColor: .isOn(isOn))
-    }
-}
+//
+//extension Color {
+//    static func isOn(_ isOn: Bool?) -> Color {
+//        Color(nsColor: .isOn(isOn))
+//    }
+//}
 #endif
 
 #if os(iOS)

@@ -28,8 +28,8 @@ extension Package {
         return Package(
             name: "swift-logic-operators",
             platforms: [
-                .macOS(.v14),
-                .iOS(.v17)
+                .macOS(.v10_15),
+                .iOS(.v13)
             ],
             products: [
                 names.map { name in

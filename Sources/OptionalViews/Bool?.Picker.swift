@@ -111,19 +111,21 @@ extension Bool? {
         }
     }
 }
-
-#Preview {
-    
-    @Previewable @State var isOn: Bool? = nil
-    @Previewable @State var isOn2: Bool? = nil
-    
-    NavigationStack {
-        Form {
-            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn)
-            
-            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn2)
-        }
-    }
-    
-}
+//#if canImport(SwiftUI) && available(macOS 14)
+//
+//#Preview {
+//    
+//    @Previewable @State var isOn: Bool? = nil
+//    @Previewable @State var isOn2: Bool? = nil
+//    
+//    NavigationStack {
+//        Form {
+//            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn)
+//            
+//            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn2)
+//        }
+//    }
+//    
+//}
+//#endif
 #endif
