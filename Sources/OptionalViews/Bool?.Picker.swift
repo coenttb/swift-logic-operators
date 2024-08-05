@@ -65,36 +65,7 @@ extension Bool? {
                 },
                 label: self.label
             )
-            
-            
-//            Picker(selection: $isOn) {
-//                ForEach(Bool?.allCases, id: \.self) { element in
-//                    label(element)
-//                }
-//            } label: {
-//                Text("Bloop")
-//            }.pickerStyle(.segmented)
-//
-//            
-//            if let _ = isOn {
-//                HStack {
-//                    Toggle(
-//                        isOn: $isOn.nonOptional.animation(),
-//                        label: label
-//                    )
-//                    Button {
-//                        isOn = nil
-//                    } label: {
-//                        Text("nil")
-//                    }
-//
-//                }
-//            } else {
-//                Toggle(
-//                    isOn: $isOn.nonOptional.animation(),
-//                    label: label
-//                )
-//            }
+            .pickerStyle(.segmented)
         }
     }
 }
