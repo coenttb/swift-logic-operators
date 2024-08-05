@@ -8,7 +8,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-extension Bool?:CaseIterable {
+extension Bool?:@retroactive CaseIterable {
     public static let allCases: [Self] = [true, false, nil]
 }
 
