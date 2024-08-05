@@ -63,9 +63,7 @@ extension Bool? {
                         content: self.content
                     )
                 },
-                label: {
-                    Text("Label")
-                }
+                label: self.label
             )
             
             
