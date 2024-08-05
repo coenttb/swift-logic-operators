@@ -13,35 +13,31 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "LogicTestingTests",
-        "name" : "LogicTestingTests"
+        "identifier" : "LogicOperators Tests",
+        "name" : "LogicOperators Tests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "PredicateLogicTests",
-        "name" : "PredicateLogicTests"
+        "identifier" : "OptionalLogic Tests",
+        "name" : "OptionalLogic Tests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "LogicOperatorsTests",
-        "name" : "LogicOperatorsTests"
+        "identifier" : "LogicTesting Tests",
+        "name" : "LogicTesting Tests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "OptionalLogicTests",
-        "name" : "OptionalLogicTests"
+        "identifier" : "PredicateLogic Tests",
+        "name" : "PredicateLogic Tests"
       }
     }
   ],

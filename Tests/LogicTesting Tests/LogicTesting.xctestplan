@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "LogicTestingTests",
-        "name" : "LogicTestingTests"
+        "identifier" : "LogicTesting Tests",
+        "name" : "LogicTesting Tests"
       }
     }
   ],
