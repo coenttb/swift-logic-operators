@@ -13,7 +13,18 @@ extension Bool?:@retroactive CaseIterable {
 }
 
 extension Bool? {
-    public struct View<
+    internal var nonOptional: Bool {
+        get {
+            self ?? false
+        }
+        set {
+            self = .some(newValue)
+        }
+    }
+}
+
+extension Bool? {
+    public struct Toggle<
         Label: SwiftUI.View,
         NilLabel: SwiftUI.View
     >: SwiftUI.View {
@@ -48,7 +59,7 @@ extension Bool? {
             
             if let _ = isOn {
                 HStack {
-                    Toggle(
+                    SwiftUI.Toggle(
                         isOn: $isOn.nonOptional.animation(),
                         label: label
                     )
@@ -60,7 +71,7 @@ extension Bool? {
 
                 }
             } else {
-                Toggle(
+                SwiftUI.Toggle(
                     isOn: $isOn.nonOptional.animation(),
                     label: label
                 )
@@ -69,16 +80,7 @@ extension Bool? {
     }
 }
 
-extension Bool? {
-    internal var nonOptional: Bool {
-        get {
-            self ?? false
-        }
-        set {
-            self = .some(newValue)
-        }
-    }
-}
+
 #endif
 
 
