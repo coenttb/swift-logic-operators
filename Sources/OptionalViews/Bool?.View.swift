@@ -49,7 +49,7 @@ extension Bool? {
             if let _ = isOn {
                 HStack {
                     Toggle(
-                        isOn: $isOn.nonOptional,
+                        isOn: $isOn.nonOptional.animation(),
                         label: label
                     )
                     Button {
@@ -61,26 +61,10 @@ extension Bool? {
                 }
             } else {
                 Toggle(
-                    isOn: $isOn.nonOptional,
+                    isOn: $isOn.nonOptional.animation(),
                     label: label
                 )
             }
-//            Picker(
-//                selection: $isOn,
-//                content: {
-//                    SwiftUI.ForEach(Bool?.allCases, id: \.self) { element in
-//                        switch element {
-//                        case .some(true):
-//                            Text("true")
-//                        case .some(false):
-//                            Text("false")
-//                        case .none:
-//                            Text("nil")
-//                        }
-//                    }
-//                },
-//                label: label
-//            ).pickerStyle(.segmented)
         }
     }
 }
