@@ -35,6 +35,38 @@ func notEqualsTest(left: Bool?, right: Bool?) {
         #expect((left != right) == !(l == r)) // Compare the values directly if both are non-nil.
     }
 }
+@Test("!=")
+func zskdhfsdf(){
+    #expect(
+        (true != Bool?.some(true)) == !Bool?.some(true)
+    )
+}
+
+@Test("!=")
+func asdan(){
+    let x: Bool? = true
+    let y: Bool? = true
+    let z: Bool? = true
+    
+    
+    let applicable1 = x
+    && (
+        (true != y)
+        || (true != z)
+    )
+    
+    let applicable2 = x
+    && (
+        !y
+        || !z
+    )
+    
+    let applicable3 = x && !(y || z)
+    
+    #expect(applicable1 == applicable2)
+    #expect(applicable1 == applicable3)
+    #expect(applicable2 == applicable3)
+}
 
 @Test("!", arguments: Bool?.allCases)
 func nandTest(bool: Bool?) {
