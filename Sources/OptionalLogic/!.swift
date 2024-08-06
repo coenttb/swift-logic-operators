@@ -50,11 +50,9 @@ prefix operator !
 /// ```
 prefix public func ! (
     value: @autoclosure () throws -> Bool?
-) rethrows -> Bool?  {
+) rethrows -> Bool? {
     guard let unwrappedValue = try value() else {
         return nil
     }
-    
-    // Ideally, this would defer to Swift's ! operator, but doing so causes ambiguity.
     return unwrappedValue != true
 }
