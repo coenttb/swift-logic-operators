@@ -51,9 +51,31 @@ import Foundation
 ///     print("An error occurred: \(error)") // Prints "An error occurred: intentionalError"
 /// }
 /// ```
+//public func !=<T: Equatable>(
+//    lhs: T?,
+//    rhs: @autoclosure () throws -> T?
+//) rethrows -> Bool {
+//
+//    let rhsValue = try rhs()
+//    
+//    switch (lhs, rhsValue) {
+//    case let (l?, r?):
+//        return l != r
+//    case (nil, nil):
+//        return false
+//    default:
+//        return true
+//    }
+//}
+
 public func !=<T: Equatable>(
     lhs: T?,
     rhs: @autoclosure () throws -> T?
-) rethrows -> Bool? {
-    return try !(lhs == rhs())
+) rethrows -> Bool {
+    let rhsValue = try rhs()
+    
+    if let lhsValue = lhs, let rhsValue = rhsValue {
+        return lhsValue != rhsValue
+    }
+    return (lhs != nil) != (rhsValue != nil)
 }
