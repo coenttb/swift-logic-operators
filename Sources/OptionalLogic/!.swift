@@ -56,5 +56,5 @@ prefix public func ! (
     }
     
     // Ideally, this would defer to Swift's ! operator, but doing so causes ambiguity.
-    return unwrappedValue == false
+    return unwrappedValue != true
 }

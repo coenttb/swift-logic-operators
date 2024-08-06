@@ -25,12 +25,14 @@ func notTest(optional: Bool?) {
 @Test("!=", arguments: Bool?.allCases, Bool?.allCases)
 func notEqualsTest(left: Bool?, right: Bool?) {
     switch (left, right) {
-    case (_, .none):
-        #expect((left != right) == .none)
+    case (.none, .none):
+        #expect((left != right) == false) // Two nil values are considered equal, so `!=` should return false.
     case (.none, _):
-        #expect((left != right) == .none)
+        #expect((left != right) == true) // nil != anything is true, since nil is considered different from any value.
+    case (_, .none):
+        #expect((left != right) == true) // anything != nil is true, similar reasoning as above.
     case let (.some(l), .some(r)):
-        #expect((left != right) == !(l == r))
+        #expect((left != right) == !(l == r)) // Compare the values directly if both are non-nil.
     }
 }
 
