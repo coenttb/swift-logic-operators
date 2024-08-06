@@ -80,9 +80,9 @@ extension Bool? {
 #endif
             
 #if os(iOS)
-            VStack(spacing: 5) {
+            VStack(alignment: .leading, spacing: 5) {
                 self.label()
-
+                    
                 HStack {
                     Spacer()
                     SwiftUI.Picker(
@@ -100,19 +100,13 @@ extension Bool? {
                     .frame(width: 140)
                     .fixedSize(horizontal: true, vertical: false)
                 }
-                
-                
-//                    .fixedSize(horizontal: false, vertical: true)
-//                    .lineLimit(nil)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-//                Spacer()
             }
 #endif
         }
     }
 }
-//#if canImport(SwiftUI) && available(macOS 14)
-//
+
+
 //#Preview {
 //    
 //    @Previewable @State var isOn: Bool? = nil
@@ -122,10 +116,8 @@ extension Bool? {
 //        Form {
 //            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn)
 //            
-//            Bool?.Picker("Very long question that just keeps on going as would be the case in any legal tech app.", isOn: $isOn2)
+//            Bool?.Picker("Very short question", isOn: $isOn2)
 //        }
 //    }
-//    
 //}
-//#endif
 #endif
