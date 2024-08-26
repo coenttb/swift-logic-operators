@@ -9,7 +9,7 @@
 import SwiftUI
 import OptionalLogic
 
-extension Bool?:@retroactive CaseIterable {
+extension Bool?:/*@retroactive*/ CaseIterable {
     public static let allCases: [Self] = [true, false, nil]
 }
 

@@ -11,7 +11,7 @@ import Foundation
 ///
 /// This extension provides all possible cases for an optional Boolean value.
 /// The possible cases are: `true`, `false`, and `nil`.
-extension Bool?: @retroactive CaseIterable {
+extension Bool?: /*@retroactive*/ CaseIterable {
     /// All possible cases for an optional Boolean value.
     public static let allCases: [Optional<Bool>] = [.some(true), .some(false), .none]
 }
