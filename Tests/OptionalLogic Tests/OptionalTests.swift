@@ -72,6 +72,12 @@ func andTest(left: Bool?, right: Bool?) {
     }
 }
 
+@Test("&&")
+func andTest2() {
+    
+    #expect((Bool?.none && Bool?.none) == nil)
+}
+
 @Test("!^", arguments: Bool?.allCases, Bool?.allCases)
 func xnorTest(left: Bool?, right: Bool?) {
     switch (left, right) {
@@ -122,4 +128,10 @@ func orTest(left: Bool?, right: Bool?) {
     case (.none, .none):
         #expect((left || right) == .none)
     }
+}
+
+
+@Test("||")
+func orTest2() {
+    #expect((Bool?.none || Bool?.none || Bool?.none || Bool?.none || Bool?.none) == Bool?.none)
 }

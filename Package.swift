@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version:5.10.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -27,10 +27,8 @@ extension Package {
         
         return Package(
             name: "swift-logic-operators",
-            platforms: [
-                .macOS(.v10_15),
-                .iOS(.v13)
-            ],
+            platforms: [ .macOS(.v10_15), .iOS(.v13) ],
+//            platforms: [ .macOS(.v14), .iOS(.v13) ],
             products: [
                 names.map { name in
                         .library(
