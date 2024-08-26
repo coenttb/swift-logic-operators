@@ -54,7 +54,7 @@ extension Package {
                     )
                 }
             ].flatMap { $0 },
-            swiftLanguageVersions: [.version("6")]
+            swiftLanguageVersions: [.v5]
         )
     }
 }
