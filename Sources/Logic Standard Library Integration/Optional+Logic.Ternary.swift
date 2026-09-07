@@ -1,4 +1,4 @@
-public import Logic_Ternary
+public import Logic
 
 extension Optional: Logic.Ternary.`Protocol` where Wrapped == Bool {
 

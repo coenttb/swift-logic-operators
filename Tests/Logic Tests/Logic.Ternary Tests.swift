@@ -1,7 +1,7 @@
 import Testing
 import Logic_Standard_Library_Integration
 
-@testable import Logic_Ternary
+@testable import Logic
 
 enum Case {}
 

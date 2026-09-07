@@ -12,54 +12,57 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-
-        .library(
-            name: "Logic",
-            targets: ["Logic"]
-        ),
-
-        .library(
-            name: "Logic Ternary",
-            targets: ["Logic Ternary"]
-        ),
-        .library(
-            name: "Logic Standard Library Integration",
-            targets: ["Logic Standard Library Integration"]
-        ),
+        .library(name: "Logic", targets: ["Logic"]),
+        .library(name: "Logic Standard Library Integration", targets: ["Logic Standard Library Integration"]),
+        .library(name: "Logic Foundation Library Integration", targets: ["Logic Foundation Library Integration"]),
+        .library(name: "Logic Test Support", targets: ["Logic Test Support"]),
     ],
     dependencies: [],
     targets: [
-
         .target(
             name: "Logic",
-            dependencies: []
-        ),
-
-        .target(
-            name: "Logic Ternary",
             dependencies: [
-                .target(name: "Logic")
-            ]
+            ],
+            path: "Sources/Logic"
         ),
         .target(
             name: "Logic Standard Library Integration",
             dependencies: [
-                .target(name: "Logic Ternary")
-            ]
+                .target(name: "Logic"),
+            ],
+            path: "Sources/Logic Standard Library Integration"
+        ),
+        .target(
+            name: "Logic Foundation Library Integration",
+            dependencies: [
+                .target(name: "Logic"),
+                .target(name: "Logic Standard Library Integration"),
+            ],
+            path: "Sources/Logic Foundation Library Integration"
+        ),
+        .target(
+            name: "Logic Test Support",
+            dependencies: [
+                .target(name: "Logic"),
+            ],
+            path: "Tests/Support"
         ),
         .testTarget(
-            name: "Logic Ternary Tests",
+            name: "Logic Tests",
             dependencies: [
-                .target(name: "Logic Ternary"),
+                .target(name: "Logic"),
                 .target(name: "Logic Standard Library Integration"),
-            ]
+                .target(name: "Logic Test Support"),
+                .target(name: "Logic Foundation Library Integration"),
+            ],
+            path: "Tests/Logic Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    let ecosystem: [SwiftSetting] = [
+for target in package.targets {
+    target.swiftSettings = [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
@@ -68,8 +71,4 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableExperimentalFeature("Lifetimes"),
         .enableUpcomingFeature("InferIsolatedConformances"),
     ]
-
-    let package: [SwiftSetting] = []
-
-    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }
