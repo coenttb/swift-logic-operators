@@ -4,10 +4,10 @@ import Logic
 @testable import Logic
 
 @Suite
-struct `Optional Logic Ternary Tests` {
-    @Suite struct Unit {}
-    @Suite struct `Edge Case` {}
-    @Suite struct Integration {}
+struct `Optional ternary operations preserve unknown values and explicit collapse behavior` {
+    @Suite struct `No optional ternary unit cases are defined` {}
+    @Suite struct `No optional ternary boundary cases are defined` {}
+    @Suite struct `No optional ternary integration cases are defined` {}
 
     static let values: [Bool?] = [true, false, nil]
 
@@ -31,7 +31,7 @@ struct `Optional Logic Ternary Tests` {
     }
 
     @Test
-    func `explicit Collapse Accessors`() {
+    func `Explicit ternary accessors distinguish true false and unknown`() {
         #expect((true as Bool?).isTrue)
         #expect(!(false as Bool?).isTrue)
         #expect(!(nil as Bool?).isTrue)

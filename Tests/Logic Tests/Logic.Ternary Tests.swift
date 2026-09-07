@@ -34,7 +34,7 @@ extension Case.Unary {
 
 extension Logic.Ternary {
     @Suite
-    struct Test {
+    struct `Ternary operations follow Strong Kleene logic and short circuit when decisive` {
         static let notCases: [Case.Unary] = [
             .init(input: true, expected: false),
             .init(input: false, expected: true),
@@ -42,21 +42,21 @@ extension Logic.Ternary {
         ]
 
         @Test(arguments: notCases)
-        func not(_ testCase: Case.Unary) {
+        func `Ternary negation reverses known values and preserves unknown`(_ testCase: Case.Unary) {
             #expect((!testCase.input) == testCase.expected)
         }
 
         @Test(arguments: [true, false])
-        func involution(_ value: Bool) {
+        func `Applying Boolean negation twice restores the original value`(_ value: Bool) {
             #expect((!(!value)) == value)
         }
     }
 }
 
-extension Logic.Ternary.Test {
+extension Logic.Ternary.`Ternary operations follow Strong Kleene logic and short circuit when decisive` {
 
     @Suite
-    struct AND {
+    struct `Ternary conjunction follows the Strong Kleene truth table` {
         static let andCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: false),
@@ -73,20 +73,20 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: andCases)
-        func and(_ testCase: Case.Binary) {
+        func `Ternary conjunction returns the Strong Kleene result`(_ testCase: Case.Binary) {
             let result = Logic.Ternary.and(testCase.lhs, testCase.rhs)
             #expect(result == testCase.expected)
         }
 
         @Test(arguments: andCases)
-        func `and Operator`(_ testCase: Case.Binary) {
+        func `The ternary conjunction operator returns the Strong Kleene result`(_ testCase: Case.Binary) {
             let result: Bool? = testCase.lhs && testCase.rhs
             #expect(result == testCase.expected)
         }
     }
 
     @Suite
-    struct OR {
+    struct `Ternary disjunction follows the Strong Kleene truth table` {
         static let orCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: false),
@@ -103,20 +103,20 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: orCases)
-        func or(_ testCase: Case.Binary) {
+        func `Ternary disjunction returns the Strong Kleene result`(_ testCase: Case.Binary) {
             let result = Logic.Ternary.or(testCase.lhs, testCase.rhs)
             #expect(result == testCase.expected)
         }
 
         @Test(arguments: orCases)
-        func `or Operator`(_ testCase: Case.Binary) {
+        func `The ternary disjunction operator returns the Strong Kleene result`(_ testCase: Case.Binary) {
             let result: Bool? = testCase.lhs || testCase.rhs
             #expect(result == testCase.expected)
         }
     }
 
     @Suite
-    struct XOR {
+    struct `Ternary exclusive disjunction propagates unknown operands` {
         static let xorCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: false),
@@ -132,13 +132,13 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: xorCases)
-        func xor(_ testCase: Case.Binary) {
+        func `The ternary exclusive disjunction operator returns the truth table result`(_ testCase: Case.Binary) {
             #expect((testCase.lhs ^ testCase.rhs) == testCase.expected)
         }
     }
 
     @Suite
-    struct XNOR {
+    struct `Ternary equivalence agrees with negated exclusive disjunction` {
         static let xnorCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: true),
@@ -154,19 +154,19 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: xnorCases)
-        func xnor(_ testCase: Case.Binary) {
+        func `The ternary equivalence operator returns the truth table result`(_ testCase: Case.Binary) {
             #expect((testCase.lhs !^ testCase.rhs) == testCase.expected)
         }
 
         @Test(arguments: xnorCases)
-        func iff(_ testCase: Case.Binary) {
+        func `Ternary iff returns the equivalence truth table result`(_ testCase: Case.Binary) {
 
             #expect(Logic.Ternary.iff(testCase.lhs, testCase.rhs) == testCase.expected)
         }
     }
 
     @Suite
-    struct NAND {
+    struct `Ternary NAND negates conjunction` {
         static let nandCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: true),
@@ -183,14 +183,14 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: nandCases)
-        func nand(_ testCase: Case.Binary) {
+        func `The ternary NAND operator returns the negated conjunction result`(_ testCase: Case.Binary) {
             let result: Bool? = testCase.lhs !&& testCase.rhs
             #expect(result == testCase.expected)
         }
     }
 
     @Suite
-    struct NOR {
+    struct `Ternary NOR negates disjunction` {
         static let norCases: [Case.Binary] = [
 
             .init(lhs: false, rhs: false, expected: true),
@@ -207,14 +207,14 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: norCases)
-        func nor(_ testCase: Case.Binary) {
+        func `The ternary NOR operator returns the negated disjunction result`(_ testCase: Case.Binary) {
             let result: Bool? = testCase.lhs !|| testCase.rhs
             #expect(result == testCase.expected)
         }
     }
 
     @Suite
-    struct Implication {
+    struct `Ternary implication agrees with disjunction of the negated antecedent` {
         static let implicationCases: [Case.Binary] = [
             .init(lhs: true, rhs: true, expected: true),
             .init(lhs: true, rhs: false, expected: false),
@@ -230,20 +230,20 @@ extension Logic.Ternary.Test {
         ]
 
         @Test(arguments: implicationCases)
-        func implies(_ testCase: Case.Binary) {
+        func `Ternary implication returns the truth table result`(_ testCase: Case.Binary) {
             let result = Logic.Ternary.implies(testCase.lhs, testCase.rhs)
             #expect(result == testCase.expected)
         }
 
         @Test(arguments: implicationCases)
-        func `matches Disjunctive Form`(_ testCase: Case.Binary) {
+        func `Disjunction with a negated antecedent returns the implication result`(_ testCase: Case.Binary) {
             let result: Bool? = !testCase.lhs || testCase.rhs
             #expect(result == testCase.expected)
         }
     }
 
     @Suite
-    struct `Short Circuit` {
+    struct `Ternary operations skip or evaluate deferred operands as required` {
         @Test
         func `and Short Circuits On False`() {
             var evaluated = false
@@ -342,11 +342,11 @@ extension Logic.Ternary.Test {
     }
 
     @Suite
-    struct `De Morgan` {
+    struct `Ternary negation obeys De Morgan laws` {
         static let values: [Bool?] = [true, false, nil]
 
         @Test(arguments: values, values)
-        func `de Morgan And`(_ a: Bool?, _ b: Bool?) {
+        func `Negated ternary conjunction equals disjunction of negated operands`(_ a: Bool?, _ b: Bool?) {
 
             let lhs: Bool? = !(a && b)
             let rhs: Bool? = !a || !b
@@ -354,7 +354,7 @@ extension Logic.Ternary.Test {
         }
 
         @Test(arguments: values, values)
-        func `de Morgan Or`(_ a: Bool?, _ b: Bool?) {
+        func `Negated ternary disjunction equals conjunction of negated operands`(_ a: Bool?, _ b: Bool?) {
 
             let lhs: Bool? = !(a || b)
             let rhs: Bool? = !a && !b
@@ -363,9 +363,9 @@ extension Logic.Ternary.Test {
     }
 
     @Suite
-    struct `Complex Expression` {
+    struct `Mixed ternary expressions preserve Strong Kleene results` {
         @Test
-        func `mixed Values`() {
+        func `Mixed ternary expressions propagate or resolve unknown values`() {
             let a: Bool? = true
             let b: Bool? = false
             let c: Bool? = nil

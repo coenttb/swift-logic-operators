@@ -4,13 +4,13 @@ import Logic
 @testable import Logic
 
 @Suite
-struct `Logic.Ternary.Builder Tests` {
-    @Suite struct Unit {}
-    @Suite struct `Edge Case` {}
-    @Suite struct Integration {}
+struct `Ternary builders combine expressions using Strong Kleene logic` {
+    @Suite struct `No ternary builder unit cases are defined` {}
+    @Suite struct `No ternary builder boundary cases are defined` {}
+    @Suite struct `No ternary builder integration cases are defined` {}
 
     @Suite
-    struct `Logic.Ternary.all (Strong Kleene AND)` {
+    struct `The all builder combines included expressions with ternary conjunction` {
 
         @Test
         func `All true returns true`() {
@@ -60,7 +60,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single true`() {
+        func `A builder containing only true returns true`() {
             let result = Bool?.all {
                 true
             }
@@ -68,7 +68,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single false`() {
+        func `A builder containing only false returns false`() {
             let result = Bool?.all {
                 false
             }
@@ -76,7 +76,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single unknown`() {
+        func `A builder containing only unknown returns unknown`() {
             let result = Bool?.all {
                 nil as Bool?
             }
@@ -84,7 +84,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Conditional inclusion - true branch`() {
+        func `The all builder includes a taken true branch`() {
             let condition = true
             let result = Bool?.all {
                 true
@@ -122,7 +122,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `If-else first branch`() {
+        func `The all builder evaluates the selected first branch`() {
             let condition = true
             let result = Bool?.all {
                 if condition {
@@ -135,7 +135,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `If-else second branch`() {
+        func `The all builder evaluates the selected second branch`() {
             let condition = false
             let result = Bool?.all {
                 if condition {
@@ -148,7 +148,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `For loop all true`() {
+        func `The all builder returns true when every loop expression is true`() {
             let result = Bool?.all {
                 for _ in 1...3 {
                     true
@@ -158,7 +158,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `For loop with false`() {
+        func `The all builder returns false when a loop expression is false`() {
             let values: [Bool?] = [true, false, true]
             let result = Bool?.all {
                 for v in values {
@@ -169,7 +169,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `For loop with unknown`() {
+        func `The all builder preserves unknown when the other loop expressions are true`() {
             let values: [Bool?] = [true, nil, true]
             let result = Bool?.all {
                 for v in values {
@@ -181,7 +181,7 @@ struct `Logic.Ternary.Builder Tests` {
     }
 
     @Suite
-    struct `Logic.Ternary.any (Strong Kleene OR)` {
+    struct `The any builder combines included expressions with ternary disjunction` {
 
         @Test
         func `All false returns false`() {
@@ -231,7 +231,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single true`() {
+        func `A builder containing only true returns true`() {
             let result = Bool?.any {
                 true
             }
@@ -239,7 +239,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single false`() {
+        func `A builder containing only false returns false`() {
             let result = Bool?.any {
                 false
             }
@@ -247,7 +247,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Single unknown`() {
+        func `A builder containing only unknown returns unknown`() {
             let result = Bool?.any {
                 nil as Bool?
             }
@@ -269,7 +269,7 @@ struct `Logic.Ternary.Builder Tests` {
     }
 
     @Suite
-    struct `Logic.Ternary.none (Strong Kleene NOR)` {
+    struct `The none builder negates ternary disjunction of included expressions` {
 
         @Test
         func `All false returns true`() {
@@ -359,22 +359,22 @@ struct `Logic.Ternary.Builder Tests` {
     }
 
     @Suite
-    struct `Static Method Tests` {
+    struct `Ternary builder methods lift and combine expression values` {
 
         @Test
-        func `All.buildExpression Bool?`() {
+        func `The all builder preserves an optional Boolean expression`() {
             let result = Logic.Ternary.Builder<Bool?>.All.buildExpression(true as Bool?)
             #expect(result == .some(true))
         }
 
         @Test
-        func `All.buildExpression Bool`() {
+        func `The all builder lifts a Boolean expression to an optional value`() {
             let result = Logic.Ternary.Builder<Bool?>.All.buildExpression(true)
             #expect(result == .some(true))
         }
 
         @Test
-        func `All.buildPartialBlock accumulated`() {
+        func `The all builder combines accumulated expressions with conjunction`() {
 
             let r1 = Logic.Ternary.Builder<Bool?>.All.buildPartialBlock(
                 accumulated: true,
@@ -402,7 +402,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `Any.buildPartialBlock accumulated`() {
+        func `The any builder combines accumulated expressions with disjunction`() {
 
             let r1 = Logic.Ternary.Builder<Bool?>.`Any`.buildPartialBlock(
                 accumulated: false,
@@ -430,7 +430,7 @@ struct `Logic.Ternary.Builder Tests` {
         }
 
         @Test
-        func `None.buildFinalResult`() {
+        func `The none builder negates its final result and preserves unknown`() {
 
             let r1 = Logic.Ternary.Builder<Bool?>.None.buildFinalResult(true)
             #expect(r1 == .some(false))
