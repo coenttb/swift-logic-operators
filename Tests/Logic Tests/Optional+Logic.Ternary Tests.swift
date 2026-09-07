@@ -1,5 +1,5 @@
 import Testing
-import Logic_Standard_Library_Integration
+import Logic
 
 @testable import Logic
 

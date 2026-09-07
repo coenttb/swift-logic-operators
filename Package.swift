@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(name: "Logic", targets: ["Logic"]),
-        .library(name: "Logic Standard Library Integration", targets: ["Logic Standard Library Integration"]),
-        .library(name: "Logic Foundation Library Integration", targets: ["Logic Foundation Library Integration"]),
+
+        .library(name: "Logic Foundation Integration", targets: ["Logic Foundation Integration"]),
         .library(name: "Logic Test Support", targets: ["Logic Test Support"]),
     ],
     dependencies: [],
@@ -25,20 +25,13 @@ let package = Package(
             ],
             path: "Sources/Logic"
         ),
+        
         .target(
-            name: "Logic Standard Library Integration",
+            name: "Logic Foundation Integration",
             dependencies: [
                 .target(name: "Logic"),
             ],
-            path: "Sources/Logic Standard Library Integration"
-        ),
-        .target(
-            name: "Logic Foundation Library Integration",
-            dependencies: [
-                .target(name: "Logic"),
-                .target(name: "Logic Standard Library Integration"),
-            ],
-            path: "Sources/Logic Foundation Library Integration"
+            path: "Sources/Logic Foundation Integration"
         ),
         .target(
             name: "Logic Test Support",
@@ -51,9 +44,8 @@ let package = Package(
             name: "Logic Tests",
             dependencies: [
                 .target(name: "Logic"),
-                .target(name: "Logic Standard Library Integration"),
                 .target(name: "Logic Test Support"),
-                .target(name: "Logic Foundation Library Integration"),
+                .target(name: "Logic Foundation Integration"),
             ],
             path: "Tests/Logic Tests"
         ),
