@@ -1,5 +1,3 @@
-# .github/metadata.yaml
-# Triaged 2026-04-29 — anomaly-fix pass after wave-4 PR-branch triage didn't apply.
 description: "Classical and three-valued Strong Kleene logic operators and result builders for Bool? in Swift."
 topics:
   - primitives
